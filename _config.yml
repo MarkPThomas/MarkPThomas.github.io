@@ -9,7 +9,7 @@ name: Mark P Thomas
 description: Structural Engineer & Software Developer from Somewhere
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-avatar: images/profile_MarkPThomas.jpg
+avatar: https://github.com/MarkPThomas/MarkPThomas.github.io/tree/master/images
 
 #
 # Flags below are optional
@@ -19,16 +19,16 @@ avatar: images/profile_MarkPThomas.jpg
 footer-links:
   dribbble:
   email: markporterthomas@gmail.com 
-  facebook: https://www.facebook.com/profile.php?id=1234350
+  facebook: profile.php?id=1234350
   flickr:
-  github: barryclark/jekyll-now
-  instagram: https://www.instagram.com/pellucidwombato
-  linkedin: https://www.linkedin.com/in/mark-porter-thomas
+  github: MarkPThomas
+  instagram: pellucidwombato
+  linkedin: mark-porter-thomas
   pinterest:
   rss: # just type anything here for a working RSS icon
   twitter: PellucidWombat
-  stackoverflow: 3341503/pellucidwombat
-  youtube: user/MarkThomasPorter
+  stackoverflow: users/3341503/pellucidwombat
+  youtube: MarkThomasPorter
   googleplus: # anything in your profile username that comes after plus.google.com/
 
 
