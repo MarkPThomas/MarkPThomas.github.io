@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Splitting by a Single Activity</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Apps_819631.html">Apps</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS_52756784.html">GIS</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Documentation_52658178.html">GIS Documentation</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Track_52560076.html">GIS Track</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Track-Solutions_52757015.html">Track Solutions</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Track-Splitting_52560128.html">Track Splitting</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Splitting by a Single Activity
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 03, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Splitting by a single <a href="GIS-Activities_52658643.html" data-linked-resource-id="52658643" data-linked-resource-version="4" data-linked-resource-type="page">activity</a> can be easily determined through the expected max speed of the activity, gap distances, &amp; gap durations.</p><h2 id="SplittingbyaSingleActivity-ExampleCase">Example Case</h2><ol start="1"><li><p>Hiking</p></li><li><p>Driving to another trailhead after the hike</p></li><li><p>Hiking another trail</p></li></ol><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/52756710/55279663.jpg?width=760" data-image-src="attachments/52756710/55279663.jpg" data-height="697" data-width="2260" data-unresolved-comment-count="0" data-linked-resource-id="55279663" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="SplitByActivity1-20231104-020634.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52756710" data-linked-resource-container-version="5" data-media-id="fa4e5928-1b1d-4c2a-9d85-b8278ab45f6e" data-media-type="file"></span><h2 id="SplittingbyaSingleActivity-Cleaning">Cleaning</h2><ol start="1"><li><p><a href="Track-Smoothing_52756672.html" data-linked-resource-id="52756672" data-linked-resource-version="6" data-linked-resource-type="page">Smooth</a> by speed <u>&lt;</u> 5 mph for hiking</p></li></ol><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/52756710/55115816.jpg?width=760" data-image-src="attachments/52756710/55115816.jpg" data-height="480" data-width="2260" data-unresolved-comment-count="0" data-linked-resource-id="55115816" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="SplitByActivity2-20231104-020656.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52756710" data-linked-resource-container-version="5" data-media-id="eed749c4-d306-45a1-b8d4-6c7396522dfe" data-media-type="file"></span><ol start="2"><li><p><a href="Track-Splitting_52560128.html" data-linked-resource-id="52560128" data-linked-resource-version="7" data-linked-resource-type="page">Split</a> by gap distance &gt; 1 mile to avoid false positives at bad <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track#Track-Points-%26-Segments" rel="nofollow">Track Points</a>.</p><ol start="1"><li><p>Distance is a good metric because it scales well with expected max speeds for an activity. e.g. even a short car ride is likely to cover far more distance than hiking with gaps from bad GPS data.</p></li></ol></li></ol><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/52756710/55279671.jpg?width=760" data-image-src="attachments/52756710/55279671.jpg" data-height="469" data-width="2260" data-unresolved-comment-count="0" data-linked-resource-id="55279671" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="SplitByActivity3-20231104-020816.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52756710" data-linked-resource-container-version="5" data-media-id="47fffc45-ef71-4154-906d-b39b5869f464" data-media-type="file"></span><h2 id="SplittingbyaSingleActivity-ExampleRecording">Example Recording</h2><p>Below is an example of the illustrated case accidentally recorded in the Cordillera Blanca on a day where we hiked out from one camp, hailed a collectivo to drive to the next trailhead, and hiked in to another camp for the night. The app will remove the driving segment and return 2 separate Tracks, one for the hike out from Yanapaccha Moraine Camp, &amp; another for the hike in to Chopicalqui Base Camp.<br/></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/52756710/53674066.png?width=760" data-image-src="attachments/52756710/53674066.png" data-height="324" data-width="943" data-unresolved-comment-count="0" data-linked-resource-id="53674066" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-02 at 10.18.28 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="52756710" data-linked-resource-container-version="5" data-media-id="43e36498-699c-4055-ba5e-78772c9224fb" data-media-type="file"></span><p>Note the high speeds from bad data in the earlier hike. This section ends up as a gap, but the gap is less than the 1 mile threshold for splitting, so the first Track is not split on this false positive.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/52756710/53706765.png?width=760" data-image-src="attachments/52756710/53706765.png" data-height="287" data-width="1174" data-unresolved-comment-count="0" data-linked-resource-id="53706765" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-02 at 10.18.21 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="52756710" data-linked-resource-container-version="5" data-media-id="41feab96-65bf-41f1-94f4-645309b4d6fc" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52756710/53674066.png">Screen Shot 2023-11-02 at 10.18.28 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52756710/53706765.png">Screen Shot 2023-11-02 at 10.18.21 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52756710/55279663.jpg">SplitByActivity1-20231104-020634.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52756710/55115816.jpg">SplitByActivity2-20231104-020656.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52756710/55279671.jpg">SplitByActivity3-20231104-020816.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 03, 2023 22:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

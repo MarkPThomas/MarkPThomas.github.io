@@ -33,6 +33,9 @@
                                                     <li>
                                 <span><a href="GIS-Track_52560076.html">GIS Track</a></span>
                             </li>
+                                                    <li>
+                                <span><a href="Track-Problems_52560352.html">Track Problems</a></span>
+                            </li>
                                                 </ol>
                     </div>
                     <h1 id="title-heading" class="pagetitle">
@@ -51,10 +54,10 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Oct 27, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 03, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
-                    <span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="532" loading="lazy" src="attachments/52723899/52658441.jpg?width=532" data-image-src="attachments/52723899/52658441.jpg" data-height="208" data-width="532" data-unresolved-comment-count="0" data-linked-resource-id="52658441" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-6-gap.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52723899" data-linked-resource-container-version="3" data-media-id="63cc4003-0e80-417b-a0dc-b64dd23c8fb6" data-media-type="file"></span><p />
+                    <p><strong>Track gaps</strong> occur when satellite reception drops to a level below which a <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="8" data-linked-resource-type="page">Track</a> can be recorded. This results in gaps in a Track Path, represented as a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary#Geometry-Objects" rel="nofollow">MultiLineString</a> when the recorded <a href="GPX-Glossary_45482018.html" data-linked-resource-id="45482018" data-linked-resource-version="1" data-linked-resource-type="page">GPX</a> is converted to <a href="GeoJSON_52559930.html" data-linked-resource-id="52559930" data-linked-resource-version="4" data-linked-resource-type="page">GeoJSON</a> format. <br/><br/>The app addresses this problem by merging the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary#Geometry-Objects" rel="nofollow">LineStrings</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="532" loading="lazy" src="attachments/52723899/52658441.jpg?width=532" data-image-src="attachments/52723899/52658441.jpg" data-height="208" data-width="532" data-unresolved-comment-count="0" data-linked-resource-id="52658441" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-6-gap.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52723899" data-linked-resource-container-version="5" data-media-id="63cc4003-0e80-417b-a0dc-b64dd23c8fb6" data-media-type="file"></span><p>Below is an example of a track gap recorded when hiking in the deep Santa Cruz Valley in the Cordillera Blanca, indicated by gaps, and then after the LineStrings have been merged.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="733" loading="lazy" src="attachments/52723899/53805057.png?width=733" data-image-src="attachments/52723899/53805057.png" data-height="490" data-width="733" data-unresolved-comment-count="0" data-linked-resource-id="53805057" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-02 at 8.51.07 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="52723899" data-linked-resource-container-version="5" data-media-id="d183bd44-ee39-4d7a-afc1-c5507aeeae0b" data-media-type="file"></span><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="751" loading="lazy" src="attachments/52723899/53772290.png?width=751" data-image-src="attachments/52723899/53772290.png" data-height="522" data-width="751" data-unresolved-comment-count="0" data-linked-resource-id="53772290" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-02 at 8.51.23 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="52723899" data-linked-resource-container-version="5" data-media-id="29d451ca-99a6-459d-b6e5-49d10f8a2a86" data-media-type="file"></span><p>Below is another example, from the Grand Canyon, rendered in <a href="GIS.ly_19333121.html" data-linked-resource-id="19333121" data-linked-resource-version="11" data-linked-resource-type="page">GIS.ly</a>, where there were many gaps. GIS.ly automatically merges the tracks, so the blue line in continuous, but you can clearly see the clusters of Track Points that indicate continuous recordings vs. gaps. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/52723899/55345310.png?width=760" data-image-src="attachments/52723899/55345310.png" data-height="982" data-width="862" data-unresolved-comment-count="0" data-linked-resource-id="55345310" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-03 at 10.19.44 PM-20231104-041949.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="52723899" data-linked-resource-container-version="5" data-media-id="71ac0d8b-6c44-4295-ab1b-1d7f281ac9a8" data-media-type="file"></span>
                     </div>
 
                                         <div class="pageSection group">
@@ -66,6 +69,15 @@
                                                             <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
                                 <a href="attachments/52723899/52658441.jpg">gis_ly-gis-6-gap.jpg</a> (image/jpeg)
                                 <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52723899/53805057.png">Screen Shot 2023-11-02 at 8.51.07 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52723899/53772290.png">Screen Shot 2023-11-02 at 8.51.23 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52723899/55345310.png">Screen Shot 2023-11-03 at 10.19.44 PM-20231104-041949.png</a> (image/png)
+                                <br/>
                                                     </div>
                     </div>
                     
@@ -73,7 +85,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Oct 28, 2023 22:50</p>
+                    <p>Document generated by Confluence on Nov 03, 2023 22:45</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>

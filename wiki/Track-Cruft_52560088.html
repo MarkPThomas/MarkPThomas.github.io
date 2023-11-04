@@ -33,6 +33,9 @@
                                                     <li>
                                 <span><a href="GIS-Track_52560076.html">GIS Track</a></span>
                             </li>
+                                                    <li>
+                                <span><a href="Track-Problems_52560352.html">Track Problems</a></span>
+                            </li>
                                                 </ol>
                     </div>
                     <h1 id="title-heading" class="pagetitle">
@@ -51,10 +54,10 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Oct 27, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 02, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
-                    <p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="396" loading="lazy" src="attachments/52560088/52756826.jpg?width=396" data-image-src="attachments/52560088/52756826.jpg" data-height="262" data-width="396" data-unresolved-comment-count="0" data-linked-resource-id="52756826" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-5-cruft1.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52560088" data-linked-resource-container-version="3" data-media-id="53ed541e-6cbb-45f8-9169-750f8233b492" data-media-type="file"></span><p /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="396" loading="lazy" src="attachments/52560088/52560204.jpg?width=396" data-image-src="attachments/52560088/52560204.jpg" data-height="316" data-width="396" data-unresolved-comment-count="0" data-linked-resource-id="52560204" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-5-cruft2.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52560088" data-linked-resource-container-version="3" data-media-id="232d8fc2-dbf1-4dff-89bd-79dfd04854c9" data-media-type="file"></span>
+                    <p><strong>Cruft</strong> is unwanted GPS data that is recorded when a GPS device merges multiple recorded periods into a single <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="8" data-linked-resource-type="page">Track</a>, often picking up periods when the device is turned on but not meant to be recording, such as when:</p><ul><li><p>charging</p></li><li><p>syncing</p></li><li><p>checking device battery levels</p></li></ul><p>This results in a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary#Geometry-Objects" rel="nofollow">MultiLineString</a> when the resulting GPX file is converted to a <a href="GeoJSON_52559930.html" data-linked-resource-id="52559930" data-linked-resource-version="4" data-linked-resource-type="page">GeoJSON</a> format. <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary#Geometry-Objects" rel="nofollow">LineStrings</a> that are considered cruft should be removed from the Track.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="396" loading="lazy" src="attachments/52560088/52756826.jpg?width=396" data-image-src="attachments/52560088/52756826.jpg" data-height="262" data-width="396" data-unresolved-comment-count="0" data-linked-resource-id="52756826" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-5-cruft1.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52560088" data-linked-resource-container-version="5" data-media-id="53ed541e-6cbb-45f8-9169-750f8233b492" data-media-type="file"></span><p>The above diagram shows an example case of how cruft may be recorded.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="396" loading="lazy" src="attachments/52560088/52560204.jpg?width=396" data-image-src="attachments/52560088/52560204.jpg" data-height="316" data-width="396" data-unresolved-comment-count="0" data-linked-resource-id="52560204" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-5-cruft2.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="52560088" data-linked-resource-container-version="5" data-media-id="232d8fc2-dbf1-4dff-89bd-79dfd04854c9" data-media-type="file"></span><p>Typically, the user will want to remove Cruft <strong>1</strong>, <strong>2</strong> &amp; <strong>3</strong> in the diagram above, keeping only the <strong><span data-colorid="c9i9xlroso">keep</span></strong> movement indicated.<br/><br/>Below is an example of cruft recorded in a GPS track from when the Garmin device was charged &amp; set up in Lima, before being used to record a hike in the Cordillera Blanca.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="540" loading="lazy" src="attachments/52560088/53542922.png?width=540" data-image-src="attachments/52560088/53542922.png" data-height="645" data-width="540" data-unresolved-comment-count="0" data-linked-resource-id="53542922" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-02 at 8.40.05 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="52560088" data-linked-resource-container-version="5" data-media-id="a724ba5d-f2a0-404f-af0a-41d39d097e93" data-media-type="file"></span><style>[data-colorid=c9i9xlroso]{color:#ff5630} html[data-color-mode=dark] [data-colorid=c9i9xlroso]{color:#cf2600}</style>
                     </div>
 
                                         <div class="pageSection group">
@@ -69,6 +72,9 @@
                                                             <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
                                 <a href="attachments/52560088/52756826.jpg">gis_ly-gis-5-cruft1.jpg</a> (image/jpeg)
                                 <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/52560088/53542922.png">Screen Shot 2023-11-02 at 8.40.05 AM.png</a> (image/png)
+                                <br/>
                                                     </div>
                     </div>
                     
@@ -76,7 +82,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Oct 28, 2023 22:50</p>
+                    <p>Document generated by Confluence on Nov 03, 2023 22:44</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>
