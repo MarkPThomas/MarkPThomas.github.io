@@ -3623,3 +3623,17 @@ body.content-type-blogpost #main-header {
 #footer {
     margin: auto;
 }
+
+p:not(li > p) {
+    line-height: 32px;
+    /* within paragraph */
+    margin-bottom: 15px;
+    /* between paragraphs */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    padding-top: 15px;
+}
