@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GeoJSON I/O</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Apps_819631.html">Apps</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Libraries_52559918.html">Libraries</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GeoJSON I/O
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The input/output serialization of the JSON object is described here.</p><p>When read in &amp; out, the GeoJSON object is comprised of nested generic types that conform to <a class="external-link" href="https://tools.ietf.org/html/rfc7946" rel="nofollow">GeoJSON Specification (RFC 7946)</a>. This wrapper library has additional functionality &amp; simplifies operations by having more specific types under aliases matching names used in this documentation.</p><h2 id="GeoJSONI/O-Input">Input</h2><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="453" loading="lazy" src="attachments/57376790/57344125.png?width=453" data-image-src="attachments/57376790/57344125.png" data-height="470" data-width="453" data-unresolved-comment-count="0" data-linked-resource-id="57344125" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 7.05.55 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="57376790" data-linked-resource-container-version="2" data-media-id="1c8bc192-aab9-43c9-8a73-5d8d44fbb41a" data-media-type="file"></span><p>There are two ways to instantiate a new GeoJSON object:</p><ol start="1"><li><p>Provide a list of Positions/Points/coordinates</p></li><li><p>Provide raw JSON.</p></li></ol><p>Both forms of instantiation are achieved through static <a class="external-link" href="https://en.wikipedia.org/wiki/Factory_method_pattern" rel="nofollow">factory methods</a> that are defined for each class.</p><p>In the case of raw JSON, it is assumed that the JSON object adheres to <a class="external-link" href="https://tools.ietf.org/html/rfc7946" rel="nofollow">GeoJSON Specification (RFC 7946)</a>. Any additions/deviations will be ignored. Instantiation through this method is used for <a href="GeoJSON-Hooks_56295444.html" data-linked-resource-id="56295444" data-linked-resource-version="3" data-linked-resource-type="page">hooking</a> a JSON object that may be shared by other services &amp; libraries.</p><h2 id="GeoJSONI/O-Output">Output</h2><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="583" loading="lazy" src="attachments/57376790/57344131.png?width=583" data-image-src="attachments/57376790/57344131.png" data-height="368" data-width="583" data-unresolved-comment-count="0" data-linked-resource-id="57344131" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 7.06.10 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="57376790" data-linked-resource-container-version="2" data-media-id="6056a65e-e9c4-4ca8-9573-2bea7c98f75e" data-media-type="file"></span><p>There are 2 ways to output a GeoJSON object:</p><ol start="1"><li><p>Serialize the called object &amp; all child objects into a JSON object by calling <code>toJson</code> or <code>save</code></p></li><li><p>Update the <a href="GeoJSON-Hooks_56295444.html" data-linked-resource-id="56295444" data-linked-resource-version="3" data-linked-resource-type="page">hooked</a> raw JSON object (if present) by calling <code>save</code></p></li></ol><p>The serialized JSON object adheres to <a class="external-link" href="https://tools.ietf.org/html/rfc7946" rel="nofollow">GeoJSON Specification (RFC 7946)</a>.</p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/57376790/57311280.png">Screen Shot 2023-11-08 at 6.32.12 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/57376790/57409654.png">Screen Shot 2023-11-08 at 6.59.15 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/57376790/57344112.png">Screen Shot 2023-11-08 at 6.59.45 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/57376790/57344125.png">Screen Shot 2023-11-08 at 7.05.55 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/57376790/57344131.png">Screen Shot 2023-11-08 at 7.06.10 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GeoJSON Geometry Collection</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Apps_819631.html">Apps</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Libraries_52559918.html">Libraries</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GeoJSON-Geometries_56164374.html">GeoJSON Geometries</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GeoJSON Geometry Collection
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>These terms adhere to <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.8" rel="nofollow">RFC 7946 - The GeoJSON Format</a>.</p>
+</div></div><p>This represents a GeoJson Feature <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/56393733" rel="nofollow">Collection</a> which holds a list of <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="10" data-linked-resource-type="page">Geometry</a> objects (when serialized the geometry list becomes a JSON array). This is implemented using a <a class="external-link" href="https://en.wikipedia.org/wiki/Delegation_pattern" rel="nofollow">Delegation Pattern</a>.</p><p>Note that the geometry list could potentially be empty. Geometries within the list must follow the specifications defined inside the <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="10" data-linked-resource-type="page">Geometry</a> class.</p><p>A <code>GeometryCollection</code> has a member with the name &quot;geometries&quot;. The value of &quot;geometries&quot; is a List. Each element of this list is a GeoJson Geometry object. It is possible for this list to be empty.</p><p>Unlike the other geometry types, a <code>GeometryCollection</code> can be a heterogeneous composition of smaller <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="10" data-linked-resource-type="page">Geometry</a> objects. For example, a <code>Geometry</code> object in the shape of a lowercase roman &quot;i&quot; can be composed of one <a href="GeoJSON-Point_56557583.html" data-linked-resource-id="56557583" data-linked-resource-version="9" data-linked-resource-type="page">Point</a> and one <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="11" data-linked-resource-type="page">LineString</a>.</p><p><code>GeometryCollection</code>s have a different syntax from single TYPE Geometry objects (<a href="GeoJSON-Point_56557583.html" data-linked-resource-id="56557583" data-linked-resource-version="9" data-linked-resource-type="page">Point</a>, <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="11" data-linked-resource-type="page">LineString</a>, and <a href="GeoJSON-Polygon_56557629.html" data-linked-resource-id="56557629" data-linked-resource-version="10" data-linked-resource-type="page">Polygon</a>) and homogeneously typed multipart Geometry objects (<a href="GeoJSON-MultiPoint_56459310.html" data-linked-resource-id="56459310" data-linked-resource-version="10" data-linked-resource-type="page">MultiPoint</a>, <a href="GeoJSON-MultiLineString_56229964.html" data-linked-resource-id="56229964" data-linked-resource-version="10" data-linked-resource-type="page">MultiLineString</a> and <a href="GeoJSON-MultiPolygon_56164392.html" data-linked-resource-id="56164392" data-linked-resource-version="10" data-linked-resource-type="page">MultiPolygon</a>) but have no different semantics. Although a <code>GeometryCollection</code> object has no &quot;coordinates&quot; member, it does have coordinates: the coordinates of all its parts belong to the collection. The &quot;geometries&quot; member of a <code>GeometryCollection</code> describes the parts of this composition. Implementations SHOULD NOT apply any additional semantics to the &quot;geometries&quot; array.</p><p>To maximize interoperability, implementations SHOULD avoid nested <code>GeometryCollections</code>. This library will not allow it.</p><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>The following may be automated in a future release.</p></div></div><p>Furthermore, <code>GeometryCollections</code> composed of a single part or a number of parts of a single TYPE SHOULD be avoided when that single part or a single object of multipart TYPE (<a href="GeoJSON-MultiPoint_56459310.html" data-linked-resource-id="56459310" data-linked-resource-version="10" data-linked-resource-type="page">MultiPoint</a>, <a href="GeoJSON-MultiLineString_56229964.html" data-linked-resource-id="56229964" data-linked-resource-version="10" data-linked-resource-type="page">MultiLineString</a> or <a href="GeoJSON-MultiPolygon_56164392.html" data-linked-resource-id="56164392" data-linked-resource-version="10" data-linked-resource-type="page">MultiPolygon</a>) could be used instead.</p><h2 id="GeoJSONGeometryCollection-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONGeometryCollection-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
+   &quot;type&quot;: &quot;GeometryCollection&quot;,
+   &quot;geometries&quot;: [{
+     &quot;type&quot;: &quot;Point&quot;,
+     &quot;coordinates&quot;: [100.0, 0.0]
+   }, {
+     &quot;type&quot;: &quot;LineString&quot;,
+     &quot;coordinates&quot;: [
+       [101.0, 0.0],
+       [102.0, 1.0]
+     ]
+   }]
+ }</pre>
+</div></div><h3 id="GeoJSONGeometryCollection-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559949" rel="nofollow">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="748" loading="lazy" src="attachments/56688644/57213008.png?width=748" data-image-src="attachments/56688644/57213008.png" data-height="722" data-width="748" data-unresolved-comment-count="0" data-linked-resource-id="57213008" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 5.19.32 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56688644" data-linked-resource-container-version="8" data-media-id="6756da29-556e-478a-913e-bc5995937b66" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/56688644/56885321.png">Screen Shot 2023-11-08 at 4.34.27 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/56688644/57213008.png">Screen Shot 2023-11-08 at 5.19.32 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

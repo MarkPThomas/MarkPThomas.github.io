@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GeoJSON Hooks</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Apps_819631.html">Apps</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Libraries_52559918.html">Libraries</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GeoJSON Hooks
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The GeoJSON library can <a class="external-link" href="https://en.wikipedia.org/wiki/Hooking" rel="nofollow">hook</a> into a GeoJSON object &amp; update it remotely. This can be useful if the object is to be associated with other objects &amp; calls. This allows those other uses (such as rendering in a <a class="external-link" href="https://leafletjs.com/" rel="nofollow">Leaflet</a> display) to benefit in a ‘lazy load’ style of GeoJSON updates. It is also an optimized &amp; safe way to update only the portions of the raw JSON file that have changed, &amp; only when a <a class="external-link" href="https://en.wikipedia.org/wiki/Unit_of_work" rel="nofollow">unit of work</a> has been completed.<br/><br/>The object can be changed in the GeoJSON library without constantly affecting other references. Only when the <code>save</code> method is called will the pointer to the object actually update the original JSON, essentially completing an update transaction.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="741" loading="lazy" src="attachments/56295444/57376875.png?width=741" data-image-src="attachments/56295444/57376875.png" data-height="706" data-width="741" data-unresolved-comment-count="0" data-linked-resource-id="57376875" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 7.04.14 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56295444" data-linked-resource-container-version="3" data-media-id="74055b29-2817-4417-85d0-9c2336f3e1e1" data-media-type="file"></span><h2 id="GeoJSONHooks-Procedure">Procedure</h2><p>In order to implement hooking, the highest level parent created in the GeoJSON library needs to be instantiated with the raw GeoJSON object that was read from a file or streamed from another source. This object &amp; all child objects will contain a reference to the appropriate portion of the raw JSON, such that updates are optimized to only writing/replacing the relevant portions of the object &amp; all children below.</p><p>In the case of newly instantiated object from provided coordinates, there is no raw JSON to update. However, <code>toJson</code> is then called, which serializes the objects into a new JSON object that is returned. This object is also hooked in to the current &amp; all child objects. Returning of the serialized JSON allows a reference to be made from other sources so that updates can be reflected elsewhere.</p><div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>toJSON only serializes the currently instantiated class into a new JSON object. Calling it alone does NOT update any hooked GeoJSON object or its children.</p>
+</div></div><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/56295444/57344007.png">Screen Shot 2023-11-08 at 6.05.57 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/56295444/57311255.png">Screen Shot 2023-11-08 at 6.22.24 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/56295444/57409554.png">Screen Shot 2023-11-08 at 6.22.58 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/56295444/57344118.png">Screen Shot 2023-11-08 at 7.00.43 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/56295444/57376875.png">Screen Shot 2023-11-08 at 7.04.14 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
