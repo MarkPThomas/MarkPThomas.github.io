@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : State History</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="History-Library_93519873.html">History Library</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : State History
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Apr 28, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><style>[data-colorid=kzsdim6b5n]{color:#ff5630} html[data-color-mode=dark] [data-colorid=kzsdim6b5n]{color:#cf2600}[data-colorid=cxwg2e8vn8]{color:#ff5630} html[data-color-mode=dark] [data-colorid=cxwg2e8vn8]{color:#cf2600}[data-colorid=xxqq0rkuir]{color:#ff5630} html[data-color-mode=dark] [data-colorid=xxqq0rkuir]{color:#cf2600}[data-colorid=zhulhe8xm5]{color:#ff5630} html[data-color-mode=dark] [data-colorid=zhulhe8xm5]{color:#cf2600}[data-colorid=vgdkq1lhx2]{color:#ff5630} html[data-color-mode=dark] [data-colorid=vgdkq1lhx2]{color:#cf2600}[data-colorid=nb6vnk7eoo]{color:#ff5630} html[data-color-mode=dark] [data-colorid=nb6vnk7eoo]{color:#cf2600}</style>This class records the history states of associated with a particular history key, irrespective of the command called. This class holds states for multiple histories, allowing either one global state to track, or separate states, say, associated with one index per object of interest. It basically creates &lsquo;save points&rsquo;, which a program can switch between if desired.</p><p>Benefits of using this library are its flexibility in tracking 1 or multiple states, as well as speed &amp; simplicity in moving between states as the state of interest is returned. A downside is that it requires more memory is required, as each state is saved. Basically, time complexity is <code>O(1)</code> for retrieval, and  space complexity is <code>O(n)</code> , for <code>n</code> states saved. A caveat to the time complexity is that <code>O(1)</code> only holds for values. For objects, time complexity is equal to that of cloning the object.</p><p>Because the outcome of a command is unknown, this class can only record the current state just before a command. In order to record the latest state reliably &amp; accurately, the pattern of usage is to always pass in the current state with each command execution, undo, or redo. This is so that if there is any missing current state, it can be patched as needed without redundant recordings.</p><h2 id="StateHistory-ClassDiagram">Class Diagram</h2><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-04-24 at 9.57.02 AM.png" width="760" loading="lazy" src="attachments/93683713/136445953.png?width=760" data-image-src="attachments/93683713/136445953.png" data-height="379" data-width="1168" data-unresolved-comment-count="0" data-linked-resource-id="136445953" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-04-24 at 9.57.02 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="f925b903-b3dc-4fbf-b27a-94d9f0542f7c" data-media-type="file" /></span><p>The StateHistory class is basically a hash map of doubly-linked lists, where each node stores an item state associated with the linked list key, and the ordering of states is set by the linkages of the list. A current state pointer points to the node in this list that is the current state for a particular item. This allows for independent histories &amp; current states of different items.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StateHistory.png" width="760" loading="lazy" src="attachments/93683713/136675329.png?width=760" data-image-src="attachments/93683713/136675329.png" data-height="484" data-width="1433" data-unresolved-comment-count="0" data-linked-resource-id="136675329" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="StateHistory.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="7d8ef678-8360-46b0-8878-59249c86f11c" data-media-type="file" /></span><h2 id="StateHistory-Operations">Operations</h2><p>One major behavior to point out is that the history object invokes the command delegate passed to it in order to handle preserving state. However, there is no way for the History to know the results of the command. Because of this, when the <code>executeCmd</code> method is invoked, it saves the current state if needed &amp; then appends a placeholder node at the end of the state history set. This placeholder is filled by the next invocation of <code>executeCmd</code> or <code>undo</code>.</p><p><strong><span data-colorid="cxwg2e8vn8">NOTE: </span></strong><a class="confluence-userlink user-mention current-user-mention" data-account-id="5ae2722fd5c9632c30138e16" href="https://markpthomas.atlassian.net/wiki/people/5ae2722fd5c9632c30138e16?ref=confluence" target="_blank" data-linked-resource-id="33069" data-linked-resource-version="1" data-linked-resource-type="userinfo" data-base-url="https://markpthomas.atlassian.net/wiki">Mark Thomas</a> <strong><span data-colorid="xxqq0rkuir">Change code, validate with tests, regarding below:</span></strong></p><div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>The above might not be necessary. See about changing library to require command to return the state to save as type T. Although the user must know whether/how to clone the result if it is an object, the same problem exists, but is more confusing, when passing in current state to the 3 main methods. Doing this would simplify using the library if no downsides are found.<br /><br />Also, regardless, why must state be passed in to &lsquo;redo&rsquo;? I forgot/cannot see how/why that one is necessary.</p>
+</div></div><h3 id="StateHistory-Undo,Redo">Undo, Redo</h3><p>The undo &amp; redo methods have a time complexity of <code>O(1)</code>. Pass in the key for the desired history to undo/redo and the corresponding linked list pointer will point to the adjacent prior/next state, if it exists. Otherwise, state is unchanged.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StateHistory-UndoRedo.png" width="760" loading="lazy" src="attachments/93683713/136544257.png?width=760" data-image-src="attachments/93683713/136544257.png" data-height="429" data-width="903" data-unresolved-comment-count="0" data-linked-resource-id="136544257" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="StateHistory-UndoRedo.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="db0da8ce-95c9-46ff-9ac3-a8fd13eb0fef" data-media-type="file" /></span><h3 id="StateHistory-ExecuteCmd">ExecuteCmd</h3><p>The executeCmd method has a time complexity of <code>O(1)</code> for values, or whatever is needed to clone a referenced object. It has a space complexity of <code>O(n)</code>, where <code>n</code> reflects the saved copy of the state. Pass in the key for the desired history to save state to, as well as the command to invoke that will change state. <strong><span data-colorid="nb6vnk7eoo">The StateHistory object will invoke the command and save the output to the current state.</span></strong></p><p><strong><span data-colorid="vgdkq1lhx2">ADD section on command delegate function</span></strong></p><p>An outline of behavior is as follows:</p><ol start="1"><li><p>Command invoked</p></li><li><p>Current state is saved (if needed)</p></li><li><p>If current state pointer is not at the end of the state history set, the remaining linked list is trimmed off.</p></li><li><p><strong><span data-colorid="kzsdim6b5n">A new empty node is appended after. It&rsquo;s state is set next time undo/redo/execute is called.</span></strong></p></li><li><p>If a state limit is set &amp; the number of saved states is exceeded, the head nodes of the state history set will be removed until the number of states is at the limit.</p></li></ol><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="2666d62c-c54a-4746-a04a-ef54068468bb" class="confluenceTable"><colgroup><col style="width: 385.0px;" /><col style="width: 374.0px;" /></colgroup><tbody><tr><th class="confluenceTh"><p /></th><th class="confluenceTh"><p /></th></tr><tr><td class="confluenceTd"><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StateHistory-executeCmd-1.png" width="363" loading="lazy" src="attachments/93683713/136871937.png?width=363" data-image-src="attachments/93683713/136871937.png" data-height="254" data-width="908" data-unresolved-comment-count="0" data-linked-resource-id="136871937" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="StateHistory-executeCmd-1.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="390b53ec-3f28-4ae7-aa12-820d4fcbc100" data-media-type="file" /></span></td><td class="confluenceTd"><p>Command invoked, causes action on state</p></td></tr><tr><td class="confluenceTd"><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StateHistory-executeCmd-2.png" width="363" loading="lazy" src="attachments/93683713/136413188.png?width=363" data-image-src="attachments/93683713/136413188.png" data-height="243" data-width="906" data-unresolved-comment-count="0" data-linked-resource-id="136413188" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="StateHistory-executeCmd-2.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="d82d1126-9512-432d-a07c-cc3aeb8893d8" data-media-type="file" /></span></td><td class="confluenceTd"><p>If current state pointer is not at the end of the state history set, the remaining linked list is trimmed off.</p></td></tr><tr><td class="confluenceTd"><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StateHistory-executeCmd-3.png" width="363" loading="lazy" src="attachments/93683713/136904705.png?width=363" data-image-src="attachments/93683713/136904705.png" data-height="252" data-width="907" data-unresolved-comment-count="0" data-linked-resource-id="136904705" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="StateHistory-executeCmd-3.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="b7a799b4-fd9b-4171-aac8-944db62e42fb" data-media-type="file" /></span></td><td class="confluenceTd"><p>New state corresponding to the action invoked is appended to the linked list.</p></td></tr><tr><td class="confluenceTd"><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-04-24 at 9.39.04 PM.png" width="368" loading="lazy" src="attachments/93683713/137560067.png?width=368" data-image-src="attachments/93683713/137560067.png" data-height="312" data-width="990" data-unresolved-comment-count="0" data-linked-resource-id="137560067" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-04-24 at 9.39.04 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="b7756821-3965-491e-8227-c05492811047" data-media-type="file" /></span></td><td class="confluenceTd"><p>Current state is incremented to the new state.</p></td></tr><tr><td class="confluenceTd"><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StateHistory-executeCmd-5.png" width="363" loading="lazy" src="attachments/93683713/136740866.png?width=363" data-image-src="attachments/93683713/136740866.png" data-height="156" data-width="908" data-unresolved-comment-count="0" data-linked-resource-id="136740866" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="StateHistory-executeCmd-5.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="93683713" data-linked-resource-container-version="10" data-media-id="8a91e25a-2fd7-4187-88bb-be0bbd23edc9" data-media-type="file" /></span></td><td class="confluenceTd"><p>If a state limit is set &amp; the number of saved states is exceeded, the head nodes of the state history set will be removed until the number of states is at the limit.</p></td></tr></tbody></table></div><p>Two important behaviors to note are:</p><ol start="1"><li><p>State limits apply separately to each state history set, so saving states for one item will not reduce the number able to be saved for another.</p></li><li><p>If a state history set has <code>undo</code> invoked and then <code>executeCmd</code>, a new history branch is created in the linked list and it is no longer possible to <code>redo</code> back to the undone state.</p></li></ol><h2 id="StateHistory-ExampleCode">Example Code</h2><p>Below is some example code of how the library could be used in a React component.</p><p><strong><span data-colorid="zhulhe8xm5">handleCmd (current, unless changed): </span></strong></p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: js; gutter: false; theme: Confluence" data-theme="Confluence">history.executeCmd(currentTrack.id, currentTrack.clone(), command);
+	setHistory(history);</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: js; gutter: false; theme: Confluence" data-theme="Confluence">const [history, setHistory] = useState&lt;StateHistory&lt;Track&gt;&gt;(new...);
+const [currentTrack, setCurrentTrack] = useState&lt;Track&gt;();
+
+addTracks(tracks: Track[]) {
+	tracks.forEach((track)) =&gt; history.addHistorySet(track.id);
+	setHistory(history);
+}
+
+handleCmd(command: () =&gt; void) {
+	const track = history.executeCmd(currentTrack.id, command);
+	setCurrentTrack(track);
+}
+
+handleUndo() {
+	const track = history.undo(currentTrack.id);
+
+	...
+
+	setCurrentTrack(track);
+}
+
+handleRedo() {
+	const track = history.redo(currentTrack.id);
+
+	...
+	
+	setCurrentTrack(track);
+}</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136445953.png">Screen Shot 2024-04-24 at 9.57.02 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136642561.png">StateHistory-UndoRedo.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136544257.png">StateHistory-UndoRedo.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136675329.png">StateHistory.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136871937.png">StateHistory-executeCmd-1.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136413188.png">StateHistory-executeCmd-2.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136904705.png">StateHistory-executeCmd-3.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136970241.png">StateHistory-executeCmd-4.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/136740866.png">StateHistory-executeCmd-5.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/93683713/137560067.png">Screen Shot 2024-04-24 at 9.39.04 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:29</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

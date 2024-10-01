@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Recorded Points Inaccurate at Times of Poor GPS Data</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly-Demos_55279733.html">GIS.ly Demos</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Recorded Points Inaccurate at Times of Poor GPS Data
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Mar 21, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>When GPS reception gets spotty, <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Track Points</a> recorded may be inaccurate. Since these incorrectly show where you went and add to inaccurate stats, it is better to <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52756672/Track+Smoothing" data-linked-resource-id="52756672" data-linked-resource-version="7" data-linked-resource-type="page">strip out</a> these <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a> and leave them as <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723899/Track+Gap" data-linked-resource-id="52723899" data-linked-resource-version="8" data-linked-resource-type="page">gaps</a> in the GPS recording through a set of <a href="Smooth-Control_103252105.html" data-linked-resource-id="103252105" data-linked-resource-version="6" data-linked-resource-type="page">smoothing operations</a>. Such gaps can be filled in later if needed through future automated &amp; manual editing features. </p><p>For example, on this hike that I did in the Santa Cruz Valley of Peru, the deep mountain valleys interfered with the GPS recordings, resulting in many inaccurate points. By <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52756672/Track+Smoothing" data-linked-resource-id="52756672" data-linked-resource-version="7" data-linked-resource-type="page">smoothing</a> the track, I removed many  <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a>, leaving a smaller file size, and by visual inspection, a more accurate path.</p><p>Below is the initial case after some earlier cleaning. At this point we have 2,587 Points. Some of the track is clearly inaccurate, seen by the large zig-zags.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-03-21 at 11.45.39 AM.png" width="633" loading="lazy" src="attachments/104267791/127238154.png?width=633" data-image-src="attachments/104267791/127238154.png" data-height="769" data-width="1409" data-unresolved-comment-count="0" data-linked-resource-id="127238154" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-03-21 at 11.45.39 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="104267791" data-linked-resource-container-version="4" data-media-id="edfc0e72-cf5b-4e28-a47e-df9f660b28af" data-media-type="file"></span><p>After smoothing by speed, 242 points were removed, reducing the total number of Points to 2,345. The most obviously inaccurate portions of the recording are clearly gone, as seen in the image.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-03-21 at 11.46.09 AM.png" width="633" loading="lazy" src="attachments/104267791/127533074.png?width=633" data-image-src="attachments/104267791/127533074.png" data-height="765" data-width="1406" data-unresolved-comment-count="0" data-linked-resource-id="127533074" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-03-21 at 11.46.09 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="104267791" data-linked-resource-container-version="4" data-media-id="c3e9e9f8-0af6-4e52-93e6-75e03f434620" data-media-type="file"></span><p>Next in this case, we smoothed by angular rotational speed, removing 2 Points, and elevation gain/loss speeds, removing an additional 360 Points. This has reduced the Track size to 1,983 points, and by visual inspection, even more of the inaccurate points are gone. There are now fewer inaccurate points to address and inaccuracies in the track stats are greatly reduced.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-03-21 at 11.46.34 AM.png" width="633" loading="lazy" src="attachments/104267791/127336461.png?width=633" data-image-src="attachments/104267791/127336461.png" data-height="765" data-width="1406" data-unresolved-comment-count="0" data-linked-resource-id="127336461" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-03-21 at 11.46.34 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="104267791" data-linked-resource-container-version="4" data-media-id="f97a4b1b-f1eb-4901-aaf2-7516ba2d86f7" data-media-type="file"></span><p>In total, these 3 operations quickly &amp; reliably removed 604 Points, or 23% of the remaining total.  Later improvements in the algorithms should remove even more points and leave even fewer to be further cleaned by more rigorous &amp; manual methods.</p><p>Below is an animation of the same cleaning process:</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Clean-Smooth-Demo-480-20240321-175837.gif" width="480" loading="lazy" src="attachments/104267791/127762460.gif?width=480" data-image-src="attachments/104267791/127762460.gif" data-height="156" data-width="240" data-unresolved-comment-count="0" data-linked-resource-id="127762460" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Clean-Smooth-Demo-480-20240321-175837.gif" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/gif" data-linked-resource-container-id="104267791" data-linked-resource-container-version="4" data-media-id="99341b5b-4825-4cbf-bedf-53124bafc0da" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104267791/127533074.png">Screen Shot 2024-03-21 at 11.46.09 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104267791/127238154.png">Screen Shot 2024-03-21 at 11.45.39 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104267791/127336461.png">Screen Shot 2024-03-21 at 11.46.34 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104267791/127139845.gif">Clean-Smooth-Speed-480-20240313-165007.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104267791/127762460.gif">Clean-Smooth-Demo-480-20240321-175837.gif</a> (image/gif)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:07</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

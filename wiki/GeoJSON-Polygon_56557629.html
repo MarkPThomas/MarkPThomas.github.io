@@ -16,16 +16,7 @@
                                 <span><a href="index.html">mark-p-thomas</a></span>
                             </li>
                                                     <li>
-                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Apps_819631.html">Apps</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Libraries_52559918.html">Libraries</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                                <span><a href="GeoJSON-Library_52559930.html">GeoJSON Library</a></span>
                             </li>
                                                     <li>
                                 <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
@@ -51,12 +42,28 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
                     <div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
 <p>These terms adhere to <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.6" rel="nofollow">RFC 7946 - The GeoJSON Format</a>.</p>
-</div></div><p>This class represents an immutable GeoJson <code>Polygon</code> which may or may not include polygon holes.</p><p>To specify a constraint specific to Polygons, it is useful to introduce the concept of a linear ring:</p><ul><li><p>A linear ring is a closed LineString with four or more coordinates.</p></li><li><p>The first and last coordinates are equivalent, and they MUST contain identical values; their representation SHOULD also be identical.</p></li><li><p>A linear ring is the boundary of a surface or the boundary of a hole in a surface.</p></li><li><p>A linear ring MUST follow the right-hand rule with respect to the area it bounds, i.e., exterior rings are counterclockwise, and holes are clockwise.</p></li></ul><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Currently no validations are handled. The following applies to future releases, which will enforce validations either by notification or automatic corrections.</p></div></div><p>Though a linear ring is not explicitly represented as a GeoJson geometry TYPE, it leads to a canonical formulation of the Polygon geometry TYPE. When initializing a new instance of this class, a <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="11" data-linked-resource-type="page">LineString</a> for the outer and optionally an inner are checked to ensure a valid linear ring.</p><p>Multiple Polygons become a <a href="GeoJSON-MultiPolygon_56164392.html" data-linked-resource-id="56164392" data-linked-resource-version="10" data-linked-resource-type="page">MultiPolygon</a>.</p><h2 id="GeoJSONPolygon-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONPolygon-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+</div></div><h2 id="GeoJSONPolygon-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236047104 {padding: 0px;}
+div.rbtoc1725236047104 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236047104 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236047104'>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONPolygon-Definition'>Definition</a></li>
+<li><a href='#GeoJSONPolygon-JSONExample&amp;ClassDiagram'>JSON Example &amp; Class Diagram</a>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONPolygon-RawGeoJSON'>Raw GeoJSON</a></li>
+<li><a href='#GeoJSONPolygon-ClassDiagram'>Class Diagram</a></li>
+</ul>
+</li>
+<li><a href='#GeoJSONPolygon-InputAssumptions'>Input Assumptions</a></li>
+</ul>
+</div><h2 id="GeoJSONPolygon-Definition">Definition</h2><p>This class represents an immutable GeoJson <code>Polygon</code> which may or may not include polygon holes.</p><p>To specify a constraint specific to Polygons, it is useful to introduce the concept of a linear ring:</p><ul><li><p>A linear ring is a closed LineString with four or more coordinates.</p></li><li><p>The first and last coordinates are equivalent, and they MUST contain identical values; their representation SHOULD also be identical.</p></li><li><p>A linear ring is the boundary of a surface or the boundary of a hole in a surface.</p></li><li><p>A linear ring MUST follow the right-hand rule with respect to the area it bounds, i.e., exterior rings are counterclockwise, and holes are clockwise.</p></li></ul><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Currently no validations are handled. The following applies to future releases, which will enforce validations either by notification or automatic corrections.</p></div></div><p>Though a linear ring is not explicitly represented as a GeoJson geometry TYPE, it leads to a canonical formulation of the Polygon geometry TYPE. When initializing a new instance of this class, a <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="13" data-linked-resource-type="page">LineString</a> for the outer and optionally an inner are checked to ensure a valid linear ring.</p><p>Multiple Polygons become a <a href="GeoJSON-MultiPolygon_56164392.html" data-linked-resource-id="56164392" data-linked-resource-version="11" data-linked-resource-type="page">MultiPolygon</a>.</p><h2 id="GeoJSONPolygon-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONPolygon-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
 <pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
    &quot;type&quot;: &quot;Polygon&quot;,
    &quot;coordinates&quot;: [
@@ -69,7 +76,7 @@
      ]
    ]
  }</pre>
-</div></div><h3 id="GeoJSONPolygon-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="GeoJSON-API_52559949.html" data-linked-resource-id="52559949" data-linked-resource-version="3" data-linked-resource-type="page">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56557629/57213045.png?width=760" data-image-src="attachments/56557629/57213045.png" data-height="320" data-width="911" data-unresolved-comment-count="0" data-linked-resource-id="57213045" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 5.42.14 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56557629" data-linked-resource-container-version="10" data-media-id="4e383d3a-3e92-4007-b34a-a3d4e7840e6e" data-media-type="file"></span><h2 id="GeoJSONPolygon-InputAssumptions">Input Assumptions</h2><p>It is assumed that the first nested set of <a href="GeoJSON-Position_56098850.html" data-linked-resource-id="56098850" data-linked-resource-version="7" data-linked-resource-type="page">Positions</a> describes the outer ring of the polygon, which is output by the <code>outer</code> method. Any other sets of Positions  are assumed to describe holes in the polygon, which are output by the <code>inner</code> method.</p>
+</div></div><h3 id="GeoJSONPolygon-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="GeoJSON-API_52559949.html" data-linked-resource-id="52559949" data-linked-resource-version="3" data-linked-resource-type="page">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56557629/57213045.png?width=760" data-image-src="attachments/56557629/57213045.png" data-height="320" data-width="911" data-unresolved-comment-count="0" data-linked-resource-id="57213045" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 5.42.14 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56557629" data-linked-resource-container-version="13" data-media-id="4e383d3a-3e92-4007-b34a-a3d4e7840e6e" data-media-type="file"></span><h2 id="GeoJSONPolygon-InputAssumptions">Input Assumptions</h2><p>It is assumed that the first nested set of <a href="GeoJSON-Position_56098850.html" data-linked-resource-id="56098850" data-linked-resource-version="9" data-linked-resource-type="page">Positions</a> describes the outer ring of the polygon, which is output by the <code>outer</code> method. Any other sets of Positions  are assumed to describe holes in the polygon, which are output by the <code>inner</code> method.</p>
                     </div>
 
                                         <div class="pageSection group">
@@ -91,7 +98,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <p>Document generated by Confluence on Sep 01, 2024 18:14</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>

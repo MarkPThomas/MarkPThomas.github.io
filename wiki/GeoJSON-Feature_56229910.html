@@ -16,16 +16,7 @@
                                 <span><a href="index.html">mark-p-thomas</a></span>
                             </li>
                                                     <li>
-                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Apps_819631.html">Apps</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Libraries_52559918.html">Libraries</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                                <span><a href="GeoJSON-Library_52559930.html">GeoJSON Library</a></span>
                             </li>
                                                     <li>
                                 <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
@@ -48,12 +39,27 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
                     <div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
 <p>These terms adhere to <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.2" rel="nofollow">RFC 7946 - The GeoJSON Format</a>.</p>
-</div></div><p>This defines a GeoJson Feature object which represents a spatially bound thing. Every Feature object is a GeoJson object no matter where it occurs in a GeoJson text. A Feature object will always have a &quot;type&quot; member with the value &quot;Feature&quot;.</p><p>A Feature object has a member with the name &quot;geometry&quot;. The value of the geometry member SHALL be either a <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="10" data-linked-resource-type="page">Geometry</a> object or, in the case that the Feature is not located, a JSON <code>null</code> value.</p><p>A Feature object has a member with the name &quot;properties&quot;. The value of the properties member is an object (any JSON object or a JSON <code>null</code> value).</p><h2 id="GeoJSONFeature-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONFeature-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+</div></div><h2 id="GeoJSONFeature-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236040950 {padding: 0px;}
+div.rbtoc1725236040950 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236040950 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236040950'>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONFeature-Definition'>Definition</a></li>
+<li><a href='#GeoJSONFeature-JSONExample&amp;ClassDiagram'>JSON Example &amp; Class Diagram</a>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONFeature-RawGeoJSON'>Raw GeoJSON</a></li>
+<li><a href='#GeoJSONFeature-ClassDiagram'>Class Diagram</a></li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GeoJSONFeature-Definition">Definition</h2><p>This defines a GeoJson Feature object which represents a spatially bound thing. Every Feature object is a GeoJson object no matter where it occurs in a GeoJson text. A Feature object will always have a &quot;type&quot; member with the value &quot;Feature&quot;.</p><p>A Feature object has a member with the name &quot;geometry&quot;. The value of the geometry member SHALL be either a <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="12" data-linked-resource-type="page">Geometry</a> object or, in the case that the Feature is not located, a JSON <code>null</code> value.</p><p>A Feature object has a member with the name &quot;properties&quot;. The value of the properties member is an object (any JSON object or a JSON <code>null</code> value).</p><h2 id="GeoJSONFeature-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONFeature-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
 <pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">  {
    &quot;type&quot;: &quot;Feature&quot;,
    &quot;geometry&quot;: {
@@ -64,7 +70,7 @@
      &quot;prop0&quot;: &quot;value0&quot;
    }
   }</pre>
-</div></div><h3 id="GeoJSONFeature-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559949" rel="nofollow">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56229910/57180274.png?width=760" data-image-src="attachments/56229910/57180274.png" data-height="316" data-width="803" data-unresolved-comment-count="0" data-linked-resource-id="57180274" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 5.47.26 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56229910" data-linked-resource-container-version="12" data-media-id="d52b8278-0ccf-418a-a3b4-9a0c1d0824c1" data-media-type="file"></span><p />
+</div></div><h3 id="GeoJSONFeature-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559949" rel="nofollow">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56229910/57180274.png?width=760" data-image-src="attachments/56229910/57180274.png" data-height="316" data-width="803" data-unresolved-comment-count="0" data-linked-resource-id="57180274" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 5.47.26 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56229910" data-linked-resource-container-version="14" data-media-id="d52b8278-0ccf-418a-a3b4-9a0c1d0824c1" data-media-type="file"></span><p />
                     </div>
 
                                         <div class="pageSection group">
@@ -92,7 +98,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <p>Document generated by Confluence on Sep 01, 2024 18:14</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>

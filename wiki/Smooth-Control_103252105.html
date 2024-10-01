@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Smooth Control</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly-How-To_55115929.html">GIS.ly How-To</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="102891764.html">GIS.ly Controls &amp; Displays</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Cleaning-Operations-Control_103350354.html">Cleaning Operations Control</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Smooth Control
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Mar 20, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52756672/Track+Smoothing" data-linked-resource-id="52756672" data-linked-resource-version="7" data-linked-resource-type="page">Smoothing</a> is the most common need/method for cleaning Tracks. This is a process of identifying likely incorrect or undesired recorded TrackPoints and removing them from the Track. </p><p>Smoothing is done by comparing <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">TrackPoint or TrackSegment</a> properties against an activity-specific criteria of min/max values, such as min speed for stopping, max speed for when the TrackPoint could not physically have been reached with the type of movement being performed.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Clean-Smooth-GrandCanyon-480.gif" width="480" loading="lazy" src="attachments/103252105/102760691.gif?width=480" data-image-src="attachments/103252105/102760691.gif" data-height="248" data-width="480" data-unresolved-comment-count="0" data-linked-resource-id="102760691" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Clean-Smooth-GrandCanyon-480.gif" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/gif" data-linked-resource-container-id="103252105" data-linked-resource-container-version="6" data-media-id="b2725967-4759-4bae-a7ea-ada0faa2df53" data-media-type="file"></span><div class="panel" style="background-color: #EAE6FF;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>v1 will include better smarter smoothing algorithms that self-refer to statistical outliers in various criteria. This may be more accurate than a singular speed limit, for example.</p>
+</div></div><h2 id="SmoothControl-Elevations">Elevations</h2><p>Operations that use elevation (such as ascent/descent rate limits) are special cases that require more work. Many GPS recordings do not have data, or if they do, such data is imprecise and usually recorded from a barometer rather than actual spatial measurements. </p><p>GIS.ly  can get terrain elevation data that corresponds to the point on the Earth’s surface of a particular TrackPoint and add it to the current session. This requires querying a 3rd party API over the internet. This cannot work offline, takes more time, and also may have daily limits and throttling limitations. As such, a prompt is shown to allow the user to choose their course of action.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Elevations-GetData-480.gif" width="480" loading="lazy" src="attachments/103252105/102760697.gif?width=480" data-image-src="attachments/103252105/102760697.gif" data-height="249" data-width="480" data-unresolved-comment-count="0" data-linked-resource-id="102760697" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Elevations-GetData-480.gif" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/gif" data-linked-resource-container-id="103252105" data-linked-resource-container-version="6" data-media-id="ab67fdce-631d-4186-8a32-2f8f3394676a" data-media-type="file"></span><div class="panel" style="background-color: #EAE6FF;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>v1 will have a database and caching mechanisms that can reduce calls to the external API within a session or between sessions/users by saving the data as it is retrieved.</p>
+</div></div><div class="panel" style="background-color: #EAE6FF;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
+<p>v1 or later will introduce new smoothing methods using elevation data, such that a Track can automatically be aligned with handrail terrain features, such as a ridgeline or canyon bottom.</p>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/103252105/102760691.gif">Clean-Smooth-GrandCanyon-480.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/103252105/102760697.gif">Elevations-GetData-480.gif</a> (image/gif)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:08</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

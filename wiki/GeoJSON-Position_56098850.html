@@ -16,16 +16,7 @@
                                 <span><a href="index.html">mark-p-thomas</a></span>
                             </li>
                                                     <li>
-                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Apps_819631.html">Apps</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Libraries_52559918.html">Libraries</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                                <span><a href="GeoJSON-Library_52559930.html">GeoJSON Library</a></span>
                             </li>
                                                     <li>
                                 <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
@@ -48,12 +39,25 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
                     <div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
 <p>These terms adhere to <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1" rel="nofollow">RFC 7946 - The GeoJSON Format</a>.</p>
-</div></div><p>A <code>Position</code> is the fundamental geometry construct. The &quot;coordinates&quot; member of a <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="10" data-linked-resource-type="page">Geometry</a> object is composed of either:</p><ul><li><p>one position in the case of a <a href="GeoJSON-Point_56557583.html" data-linked-resource-id="56557583" data-linked-resource-version="9" data-linked-resource-type="page">Point</a> geometry,</p></li><li><p>an array of positions in the case of a <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="11" data-linked-resource-type="page">LineString</a> or <a href="GeoJSON-MultiPoint_56459310.html" data-linked-resource-id="56459310" data-linked-resource-version="10" data-linked-resource-type="page">MultiPoint</a> geometry,</p></li><li><p>an array of <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="11" data-linked-resource-type="page">LineString</a>, or linear ring coordinates in the case of a <a href="GeoJSON-Polygon_56557629.html" data-linked-resource-id="56557629" data-linked-resource-version="10" data-linked-resource-type="page">Polygon</a> or <a href="GeoJSON-MultiLineString_56229964.html" data-linked-resource-id="56229964" data-linked-resource-version="10" data-linked-resource-type="page">MultiLineString</a> geometry</p></li><li><p>an array of <a href="GeoJSON-Polygon_56557629.html" data-linked-resource-id="56557629" data-linked-resource-version="10" data-linked-resource-type="page">Polygon</a> coordinates in the case of a <a href="GeoJSON-MultiPolygon_56164392.html" data-linked-resource-id="56164392" data-linked-resource-version="10" data-linked-resource-type="page">MultiPolygon</a> geometry.</p></li></ul><p>A <code>Position</code> is an array of numbers. There MUST be two or more elements. The first two elements are longitude and latitude, or easting and northing, precisely in that order and using decimal numbers. </p><p>Altitude or elevation MAY be included as an optional third element.</p><h3 id="GeoJSONPosition-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+</div></div><h2 id="GeoJSONPosition-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236049818 {padding: 0px;}
+div.rbtoc1725236049818 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236049818 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236049818'>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONPosition-Definition'>Definition</a>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONPosition-RawGeoJSON'>Raw GeoJSON</a></li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GeoJSONPosition-Definition">Definition</h2><p>A <code>Position</code> is the fundamental geometry construct. The &quot;coordinates&quot; member of a <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="12" data-linked-resource-type="page">Geometry</a> object is composed of either:</p><ul><li><p>one position in the case of a <a href="GeoJSON-Point_56557583.html" data-linked-resource-id="56557583" data-linked-resource-version="12" data-linked-resource-type="page">Point</a> geometry,</p></li><li><p>an array of positions in the case of a <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="13" data-linked-resource-type="page">LineString</a> or <a href="GeoJSON-MultiPoint_56459310.html" data-linked-resource-id="56459310" data-linked-resource-version="11" data-linked-resource-type="page">MultiPoint</a> geometry,</p></li><li><p>an array of <a href="GeoJSON-LineString_56033324.html" data-linked-resource-id="56033324" data-linked-resource-version="13" data-linked-resource-type="page">LineString</a>, or linear ring coordinates in the case of a <a href="GeoJSON-Polygon_56557629.html" data-linked-resource-id="56557629" data-linked-resource-version="13" data-linked-resource-type="page">Polygon</a> or <a href="GeoJSON-MultiLineString_56229964.html" data-linked-resource-id="56229964" data-linked-resource-version="12" data-linked-resource-type="page">MultiLineString</a> geometry</p></li><li><p>an array of <a href="GeoJSON-Polygon_56557629.html" data-linked-resource-id="56557629" data-linked-resource-version="13" data-linked-resource-type="page">Polygon</a> coordinates in the case of a <a href="GeoJSON-MultiPolygon_56164392.html" data-linked-resource-id="56164392" data-linked-resource-version="11" data-linked-resource-type="page">MultiPolygon</a> geometry.</p></li></ul><p>A <code>Position</code> is an array of numbers. There MUST be two or more elements. The first two elements are longitude and latitude, or easting and northing, precisely in that order and using decimal numbers. </p><p>Altitude or elevation MAY be included as an optional third element.</p><h3 id="GeoJSONPosition-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
 <pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence"> [-100.0, 62.5, 3245.0]</pre>
 </div></div><p>With a schema below:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
 <pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">[
@@ -69,7 +73,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <p>Document generated by Confluence on Sep 01, 2024 18:14</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>

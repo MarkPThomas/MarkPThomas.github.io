@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Polyline Versions</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Geometry-Library_52723714.html">Geometry Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Geometry-System-Architecture_181666127.html">Geometry System Architecture</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="181666137.html">Polyline (Geometry)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Polyline Versions
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Aug 23, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>When the polyline has changes made, there may be other dependent objects that are affected by these changes, such as the <a href="Polyline-Stats_61341699.html" data-linked-resource-id="61341699" data-linked-resource-version="7" data-linked-resource-type="page">Stats </a>object. However, such objects may not want to update every time the polyline changes. Just as needed, if any changes have occurred in the meantime.</p><p>In order to maintain loose coupling between classes, the Polyline has a <code>version</code> property. This property is meaningless in an of itself, but it increments with every modification of the structure. Therefore, interested entities can be aware of a change in the structure on demand due to the relative changes in the property and can interact with the polyline accordingly. See <a href="Polyline-Stats_61341699.html" data-linked-resource-id="61341699" data-linked-resource-version="7" data-linked-resource-type="page">PolylineStats</a> for an example of how this property can be used to hook into the Polyline object.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-22 at 4.04.54 PM.png" width="250" loading="lazy" src="attachments/94109698/181927973.png?width=250" data-image-src="attachments/94109698/181927973.png" data-height="440" data-width="364" data-unresolved-comment-count="0" data-linked-resource-id="181927973" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-22 at 4.04.54 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="94109698" data-linked-resource-container-version="3" data-media-id="52901700-f4ba-49f8-99ed-a73fcabd5bfb" data-media-type="file"></span>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/94109698/181927973.png">Screen Shot 2024-08-22 at 4.04.54 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:17</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

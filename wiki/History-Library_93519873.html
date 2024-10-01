@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : History Library</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : History Library
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Apr 24, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>This library contains various ways of recording history/states of an object or app. This is most commonly used for undo/redo operations.</p><h2 id="HistoryLibrary-Comparisons">Comparisons</h2><p>Below is a table comparing the main differences between using a <a href="State-History_93683713.html" data-linked-resource-id="93683713" data-linked-resource-version="10" data-linked-resource-type="page">State History</a> vs. <a href="Command-History_93847553.html" data-linked-resource-id="93847553" data-linked-resource-version="3" data-linked-resource-type="page">Command History </a>object:</p><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="d19e7297-c72a-45ea-b21d-041ddaab53bc" class="confluenceTable"><tbody><tr><th class="confluenceTh"><p><strong>State History</strong></p></th><th class="confluenceTh"><p><strong>Command History</strong></p></th></tr><tr><td class="confluenceTd"><p>Command agnostic. Can be one-way state changes where no method can reverse the state.</p></td><td class="confluenceTd"><p>The only commands that can be undone are ones that have an associated command that perfectly reverses the changes to the object.</p></td></tr><tr><td class="confluenceTd"><p>Faster than Command History, since all that is needed is changing reference pointers in memory.</p></td><td class="confluenceTd"><p>Slower than State History, since an object must be transformed back to an earlier state.</p></td></tr><tr><td class="confluenceTd"><p>Requires more memory than Command History</p></td><td class="confluenceTd"><p>Requires very little memory. Just enough to record information of the commands used such that an associated reversing command can be called.</p></td></tr><tr><td class="confluenceTd"><p>If space complexity/memory for storing the state object is large, the memory for State History can be limited by limiting the # of states saved. </p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p>Best for when time complexity is large for changing state compared to space complexity of storing state objects.</p></td><td class="confluenceTd"><p>Best for when space complexity for storing objects is large, or when you want an unlimited # of saved states.</p></td></tr></tbody></table></div><p>Note that the deficiencies in one history strategy is a strength of the other. With both methodologies implemented, users can adopt a <a href="Hybrid-History_136675346.html" data-linked-resource-id="136675346" data-linked-resource-version="1" data-linked-resource-type="page">hybrid strategy</a> using both states, such as <code>Command History</code> for many small undoable changes, and <code>State History</code> as major saving points to skip many reversals, or to handle cases where actions cannot be reversed by an associated method.</p><h2 id="HistoryLibrary-Diagrams">Diagrams</h2><p>Diagrams are made in <a class="external-link" href="https://www.figma.com/file/FqIzJCeNb7slMeuWaGuZMn/History?type=whiteboard&amp;node-id=0-1&amp;t=Lk9DQthF7lYY0usw-0" rel="nofollow">Figma</a>.</p><h2 id="HistoryLibrary-ChildPages">Child Pages</h2><ul class='childpages-macro'><li><a href="State-History_93683713.html" data-linked-resource-id="93683713" data-linked-resource-version="10" data-linked-resource-type="page">State History</a></li><li><a href="Command-History_93847553.html" data-linked-resource-id="93847553" data-linked-resource-version="3" data-linked-resource-type="page">Command History</a></li><li><a href="Hybrid-History_136675346.html" data-linked-resource-id="136675346" data-linked-resource-version="1" data-linked-resource-type="page">Hybrid History</a></li></ul>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:29</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

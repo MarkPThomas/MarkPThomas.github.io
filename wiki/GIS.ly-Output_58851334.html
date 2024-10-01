@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS.ly Output</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly-System-Architecture_57606145.html">GIS.ly System Architecture</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="59146248.html">GIS.ly Input/Output</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS.ly Output
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="GIS.lyOutput-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725235773993 {padding: 0px;}
+div.rbtoc1725235773993 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725235773993 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725235773993'>
+<ul class='toc-indentation'>
+<li><a href='#GIS.lyOutput-WritingtheFile'>Writing the File</a></li>
+<li><a href='#GIS.lyOutput-Pre-Processing'>Pre-Processing</a></li>
+</ul>
+</div><h2 id="GIS.lyOutput-WritingtheFile">Writing the File</h2><p>When GIS data is written, a separate service with an interface is called. This allows for maximum flexibility in changing/modifying libraries that read files, data streams, etc. in various formats such as <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45482018/GPX+Glossary" data-linked-resource-id="45482018" data-linked-resource-version="1" data-linked-resource-type="page">GPX</a>, <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45678641/KML+Glossary" data-linked-resource-id="45678641" data-linked-resource-version="1" data-linked-resource-type="page">KML</a>, etc. The core writing function will actually be file agnostic, writing out by whatever format the file was first <a href="GIS.ly-Input_59047940.html" data-linked-resource-id="59047940" data-linked-resource-version="7" data-linked-resource-type="page">read in</a> for the session. This can be changed during write &amp; changed in-session.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="751" loading="lazy" src="attachments/58851334/60326248.png?width=751" data-image-src="attachments/58851334/60326248.png" data-height="614" data-width="751" data-unresolved-comment-count="0" data-linked-resource-id="60326248" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.13.21 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="58851334" data-linked-resource-container-version="6" data-media-id="43256429-2c70-45a9-a161-cc50d1d56900" data-media-type="file"></span><h2 id="GIS.lyOutput-Pre-Processing">Pre-Processing</h2><p>Files are written with plain old JSON. As such, the app first needs to extract the GeoJSON. Next, the GeoJSON must be converted to the destination JSON format before write.</p><p>The following illustrates how the application saves the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a> back to a file, such as <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45482018/GPX+Glossary" data-linked-resource-id="45482018" data-linked-resource-version="1" data-linked-resource-type="page">GPX</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/58851334/60260378.png?width=760" data-image-src="attachments/58851334/60260378.png" data-height="537" data-width="983" data-unresolved-comment-count="0" data-linked-resource-id="60260378" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-17 at 4.34.12 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="58851334" data-linked-resource-container-version="6" data-media-id="4c030d9b-d67f-4fb1-8854-b69c5b7223b1" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/58851334/60260378.png">Screen Shot 2023-11-17 at 4.34.12 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/58851334/60326248.png">Screen Shot 2023-11-09 at 12.13.21 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:09</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

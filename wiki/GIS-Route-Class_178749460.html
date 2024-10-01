@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS Route Class</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Library_52756784.html">GIS Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-System-Architecture_59244568.html">GIS System Architecture</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS Route Class
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Aug 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="GISRouteClass-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236137390 {padding: 0px;}
+div.rbtoc1725236137390 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236137390 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236137390'>
+<ul class='toc-indentation'>
+<li><a href='#GISRouteClass-FactoryMethods'>Factory Methods</a>
+<ul class='toc-indentation'>
+<li><a href='#GISRouteClass-fromJson'>fromJson</a></li>
+</ul>
+</li>
+<li><a href='#GISRouteClass-Serialization'>Serialization</a>
+<ul class='toc-indentation'>
+<li><a href='#GISRouteClass-toJson'>toJson</a></li>
+</ul>
+</li>
+<li><a href='#GISRouteClass-Updating'>Updating</a>
+<ul class='toc-indentation'>
+<li><a href='#GISRouteClass-updateGeoJsonTrack'>updateGeoJsonTrack</a></li>
+</ul>
+</li>
+<li><a href='#GISRouteClass-RouteCalculations'>Route Calculations</a></li>
+</ul>
+</div><p>This class represents <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Routes</a> used in many GIS operations.</p><div class="confluence-information-macro confluence-information-macro-note"><span class="aui-icon aui-icon-small aui-iconfont-warning confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>Currently this class has not been created, but as the GIS library expands in uses and capabilities, one will be created analogous to the <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track Class</a>. Information on this page is still accurate, apart from the diagrams referring to ‘Track’ where is should have ‘Route’ displayed.</p></div></div><h2 id="GISRouteClass-FactoryMethods">Factory Methods</h2><p>The <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Track object</a> is instantiated purely through factory methods as there are a variety of ways to instantiate one.</p><h3 id="GISRouteClass-fromJson">fromJson</h3><p>This factory method creates a new <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a> from a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON FeatureCollection wrapper object</a>. If such an object was initialized with raw <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a>, then changes to the <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a> will cascade to the original <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/178749460/182845463.png?width=760" data-image-src="attachments/178749460/182845463.png" data-height="612" data-width="1188" data-unresolved-comment-count="0" data-linked-resource-id="182845463" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-16 at 7.05.26 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="178749460" data-linked-resource-container-version="4" data-media-id="51f343fe-8138-48c8-a2ec-f91933952b92" data-media-type="file"></span><h2 id="GISRouteClass-Serialization">Serialization</h2><p>The <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a> has a variety of methods for exporting its state for other uses.</p><h3 id="GISRouteClass-toJson">toJson</h3><p>The <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a> can write its state back to <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> via the contained <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON wrapper object</a>. This is illustrated below.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/178749460/182845469.png?width=760" data-image-src="attachments/178749460/182845469.png" data-height="492" data-width="842" data-unresolved-comment-count="0" data-linked-resource-id="182845469" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-18 at 11.41.23 AM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="178749460" data-linked-resource-container-version="4" data-media-id="fceefa15-a421-4f32-8171-a37f6436d4e6" data-media-type="file"></span><h2 id="GISRouteClass-Updating">Updating</h2><p>Most of the querying &amp; modifications occur only on the<a class="createlink" href="/wiki/pages/createpage.action?spaceKey=MARKPTHOMA&amp;title=Route%20Polyline&amp;linkCreation=true&amp;fromPageId=178749460"> Polyline Route</a> for the sake of efficiency. Because of this, the contained Polyline object will inevitably get out of sync with the contained <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON wrapper object</a>. Updating syncs these two objects on the relevant data.</p><h3 id="GISRouteClass-updateGeoJsonTrack">updateGeoJsonTrack</h3><p>This is often called within the <a href="GIS-Route-Manager-Classes_179470353.html" data-linked-resource-id="179470353" data-linked-resource-version="2" data-linked-resource-type="page">Route Manager</a> during <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route</a> modifications. However, it can also be called independently from the main <code>Map.tsx</code> <a class="external-link" href="https://react-leaflet.js.org/" rel="nofollow">React-Leaflet</a> component. See <a href="GIS-Route-Manager-Classes_179470353.html" data-linked-resource-id="179470353" data-linked-resource-version="2" data-linked-resource-type="page">GIS Route Managers</a> &amp; <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59211781/GIS.ly+Track+Managers" data-linked-resource-id="59211781" data-linked-resource-version="6" data-linked-resource-type="page"><del>GIS.ly Route Managers</del></a><del> </del>for examples of where this method is called.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/178749460/182845475.png?width=760" data-image-src="attachments/178749460/182845475.png" data-height="459" data-width="1261" data-unresolved-comment-count="0" data-linked-resource-id="182845475" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.30.31 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="178749460" data-linked-resource-container-version="4" data-media-id="8d931ca9-5658-4679-9729-04567e77cffd" data-media-type="file"></span><p>Not only does this synchronize the state of the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON Wrapper object</a> stored within the <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a>, but it also updates any <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">raw GeoJSON object</a> that may have been used to instantiate the <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/178749460/182845481.png?width=760" data-image-src="attachments/178749460/182845481.png" data-height="582" data-width="1211" data-unresolved-comment-count="0" data-linked-resource-id="182845481" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-17 at 4.22.41 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="178749460" data-linked-resource-container-version="4" data-media-id="ff1f046d-1b81-475d-8171-7bd4fb84a8f8" data-media-type="file"></span><h2 id="GISRouteClass-RouteCalculations">Route Calculations</h2><p>The <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a> holds a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polyline Data Structure</a> (<a class="createlink" href="/wiki/pages/createpage.action?spaceKey=MARKPTHOMA&amp;title=Route%20Polyline&amp;linkCreation=true&amp;fromPageId=178749460">Route Polyline</a>) &amp; an associated <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON object within a wrapper</a>. The polyline acts as a proxy for the original <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">track</a>, where additional decorations of <a href="GIS-Path_52560064.html" data-linked-resource-id="52560064" data-linked-resource-version="7" data-linked-resource-type="page">properties can be added to vertices, segments, including 2nd &amp; 3rd order affects</a>.</p><p>These objects &amp; properties are also easily accessed &amp; manipulated by <a href="GIS-Track-Manager-Classes_60293125.html" data-linked-resource-id="60293125" data-linked-resource-version="6" data-linked-resource-type="page">manager objects</a> that are given a <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route object</a> to perform work on.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/178749460/182845487.png?width=760" data-image-src="attachments/178749460/182845487.png" data-height="379" data-width="1180" data-unresolved-comment-count="0" data-linked-resource-id="182845487" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.20.34 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="178749460" data-linked-resource-container-version="4" data-media-id="1b4ebf26-bce2-4ecb-8971-479b0c750416" data-media-type="file"></span>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/178749460/182845463.png">Screen Shot 2023-11-16 at 7.05.26 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/178749460/182845469.png">Screen Shot 2023-11-18 at 11.41.23 AM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/178749460/182845475.png">Screen Shot 2023-11-09 at 12.30.31 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/178749460/182845481.png">Screen Shot 2023-11-17 at 4.22.41 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/178749460/182845487.png">Screen Shot 2023-11-09 at 12.20.34 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

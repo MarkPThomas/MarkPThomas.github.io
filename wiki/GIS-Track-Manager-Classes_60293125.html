@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS Track Manager Classes</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Library_52756784.html">GIS Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-System-Architecture_59244568.html">GIS System Architecture</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Manager-Classes_179437580.html">GIS Manager Classes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS Track Manager Classes
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="GISTrackManagerClasses-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236136734 {padding: 0px;}
+div.rbtoc1725236136734 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236136734 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236136734'>
+<ul class='toc-indentation'>
+<li><a href='#GISTrackManagerClasses-TrackCalculations'>Track Calculations</a></li>
+<li><a href='#GISTrackManagerClasses-ManagerOperations'>Manager Operations</a></li>
+<li><a href='#GISTrackManagerClasses-ManagerStructure'>Manager Structure</a>
+<ul class='toc-indentation'>
+<li><a href='#GISTrackManagerClasses-ActionManagers(LowerTier)'>Action Managers (Lower Tier)</a></li>
+<li><a href='#GISTrackManagerClasses-SolutionManagers(UpperTier)'>Solution Managers (Upper Tier)</a>
+<ul class='toc-indentation'>
+<li><a href='#GISTrackManagerClasses-Delegating'>Delegating</a></li>
+<li><a href='#GISTrackManagerClasses-NodeTraversal&amp;Manipulation'>Node Traversal &amp; Manipulation</a></li>
+<li><a href='#GISTrackManagerClasses-UpdatingHookedGeoJSONObjects'>Updating Hooked GeoJSON Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GISTrackManagerClasses-TrackCalculations">Track Calculations</h2><p>The <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a> object holds a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polyline Data Structure</a> &amp; an associated <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON object within a wrapper</a>. The polyline acts as a proxy for the original track, where additional decorations of <a href="GIS-Path_52560064.html" data-linked-resource-id="52560064" data-linked-resource-version="7" data-linked-resource-type="page">properties can be added to vertices, segments, including 2nd &amp; 3rd order affects</a>. These properties can be displayed in the <a class="external-link" href="https://leafletjs.com/" rel="nofollow">Leaflet</a> component by association with the appropriate <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track Point</a>. They are also easily accessed &amp; manipulated by <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59211781/GIS.ly+Track+Managers" data-linked-resource-id="59211781" data-linked-resource-version="6" data-linked-resource-type="page">manager objects</a> that are given a Track to perform work on.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/60293125/60227615.png?width=760" data-image-src="attachments/60293125/60227615.png" data-height="379" data-width="1180" data-unresolved-comment-count="0" data-linked-resource-id="60227615" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.20.34 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="60293125" data-linked-resource-container-version="6" data-media-id="8929469f-699f-4290-bef5-d09f49079ae5" data-media-type="file"></span><h2 id="GISTrackManagerClasses-ManagerOperations">Manager Operations</h2><p>Track Managers are used to do any <a class="external-link" href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" rel="nofollow">CRUD</a> operations on a <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a> beyond the basic properties &amp; methods provided by the <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a>. This allows infinite customization &amp; manipulation of <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track objects</a> without needing to modify the <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track class</a> itself.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/60293125/60227602.png?width=760" data-image-src="attachments/60293125/60227602.png" data-height="598" data-width="1262" data-unresolved-comment-count="0" data-linked-resource-id="60227602" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-17 at 4.18.27 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="60293125" data-linked-resource-container-version="6" data-media-id="01018fd5-9a04-4a45-b8d3-6a251c7ab325" data-media-type="file"></span><h2 id="GISTrackManagerClasses-ManagerStructure">Manager Structure</h2><p>Managers are structured in two tiers, described below. </p><h3 id="GISTrackManagerClasses-ActionManagers(LowerTier)">Action Managers (Lower Tier)</h3><p>The lower tier is an action-specific manager. This is a more generic manager that contains the <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a> &amp; performs more general operations on it such as <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560052/Polyline+Split" data-linked-resource-id="52560052" data-linked-resource-version="7" data-linked-resource-type="page">splitting</a> &amp; <a href="Track-Smoothing_52756672.html" data-linked-resource-id="52756672" data-linked-resource-version="7" data-linked-resource-type="page">smoothing</a>. This lower tier manager may also expose parts of the <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a>, such as start/end <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">vertices</a> &amp; <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">segments</a> for traversals, but usually this is kept at the lower level.  </p><h3 id="GISTrackManagerClasses-SolutionManagers(UpperTier)">Solution Managers (Upper Tier)</h3><p>Solution managers implement actions in order to perform a specific <a href="Track-Solutions_52757015.html" data-linked-resource-id="52757015" data-linked-resource-version="5" data-linked-resource-type="page">solution</a> to <a href="Track-Problems_52560352.html" data-linked-resource-id="52560352" data-linked-resource-version="4" data-linked-resource-type="page">problems</a>/needs of a <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a>. These managers implement more logic more specific to the <a href="Track-Problems_52560352.html" data-linked-resource-id="52560352" data-linked-resource-version="4" data-linked-resource-type="page">problem</a> addressed rather than the workings of the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Track polyline data structure</a> &amp; interact with the action manager as needed.  </p><p>The sequence diagram above shows an example of this with a <code>DurationSplitter</code> that splits a <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a> based on the elapsed time between two <a href="GIS-Point_52723887.html" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Track Points</a>.</p><h4 id="GISTrackManagerClasses-Delegating">Delegating</h4><p>Delegating provides external logic, typically by setting a limit criteria, &amp; then directly calls a basic method provided by the Action Manager.</p><h4 id="GISTrackManagerClasses-NodeTraversal&amp;Manipulation">Node Traversal &amp; Manipulation</h4><p>Sometimes deeper access to the Track Polyline is needed. In this case, the manager may get start/end <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">vertices</a> &amp; <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">segments</a> from the Action Manager, which allows for unlimited depth &amp; flexibility on operations. However, these objects should NOT be exposed beyond this manager in order to avoid unexpected changes to the <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a>.</p><h4 id="GISTrackManagerClasses-UpdatingHookedGeoJSONObjects">Updating Hooked GeoJSON Objects </h4><p>For efficiency, none of the manipulations update any <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON objects</a> by default. This allows for intermediate rollbacks before transaction commitments, as well as single actions being iterated without time penalties.</p><p>It is up to the manager object to decide when or whether to update the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON object</a>. Such updates can also be done <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59244550/GIS.ly+Track+Updates" data-linked-resource-id="59244550" data-linked-resource-version="6" data-linked-resource-type="page">external to the manager</a>.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/60293125/60227602.png">Screen Shot 2023-11-17 at 4.18.27 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/60293125/60227615.png">Screen Shot 2023-11-09 at 12.20.34 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

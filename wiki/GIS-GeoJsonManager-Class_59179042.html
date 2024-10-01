@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS GeoJsonManager Class</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Library_52756784.html">GIS Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-System-Architecture_59244568.html">GIS System Architecture</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Manager-Classes_179437580.html">GIS Manager Classes</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS GeoJsonManager Class
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="GISGeoJsonManagerClass-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236135449 {padding: 0px;}
+div.rbtoc1725236135449 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236135449 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236135449'>
+<ul class='toc-indentation'>
+<li><a href='#GISGeoJsonManagerClass-FactoryMethods'>Factory Methods</a>
+<ul class='toc-indentation'>
+<li><a href='#GISGeoJsonManagerClass-trackFromJson'>trackFromJson</a></li>
+</ul>
+</li>
+<li><a href='#GISGeoJsonManagerClass-Serialization'>Serialization</a></li>
+<li><a href='#GISGeoJsonManagerClass-toTrack'>toTrack</a></li>
+</ul>
+</div><p>The GeoJSON manager class is meant to handle various tasks associated with <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> objects, such as validation, extraction of selective data, &amp; conversion to types used within the library, such as <a href="GIS-Track-Class_59146275.html" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track objects</a>.</p><h2 id="GISGeoJsonManagerClass-FactoryMethods">Factory Methods</h2><p>The GeoJSON manager is instantiated purely through factory methods as there are a variety of ways to instantiate one.</p><h3 id="GISGeoJsonManagerClass-trackFromJson">trackFromJson</h3><p>This factory method creates a new GeoJSON manager object from a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" rel="nofollow">GeoJSON FeatureCollection wrapper object</a>. If such an object was initialized with raw <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292" rel="nofollow">GeoJSON</a>, then changes to the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076" rel="nofollow">Track object</a> will cascade to the original <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292" rel="nofollow">GeoJSON</a> object.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59179042/59408403.png?width=760" data-image-src="attachments/59179042/59408403.png" data-height="625" data-width="1244" data-unresolved-comment-count="0" data-linked-resource-id="59408403" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-16 at 7.10.18 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59179042" data-linked-resource-container-version="7" data-media-id="4d94eeb3-4168-4cc0-ba4f-a916c6203f3e" data-media-type="file"></span><h2 id="GISGeoJsonManagerClass-Serialization">Serialization</h2><p>The GeoJSON manager object has a variety of methods for exporting its state for other uses. A common one is conversion to various data types used in the app, such as <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076" rel="nofollow">Track objects</a>.</p><h2 id="GISGeoJsonManagerClass-toTrack">toTrack</h2><p>The <code>GeoJsonManager</code>, once initialized with a wrapped <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON object</a>, can be called to attempt to generate a <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track object</a>. In order for this to work, the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON object</a> is assumed to contain a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">Feature Collection</a> with a single <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">Feature</a> (only the first is used). This <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">Feature</a> is assumed to contain either a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">LineString</a> or a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">MultiLineString</a>. Any violations of the assumptions results in <code>null</code> returned.</p><p><a href="Track-Gap_52723899.html" data-linked-resource-id="52723899" data-linked-resource-version="8" data-linked-resource-type="page">Track Gaps</a> are managed here by merging <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">LineStrings</a> of any <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">MultiLineString</a> into a single <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">LineString</a> object.</p><p>Finally, the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">LineString</a> is used to generate a <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track object</a>, which is returned. See <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class#fromJson" rel="nofollow"><strong>ref: Track.fromJson</strong></a> for more details.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59179042/59244624.png?width=760" data-image-src="attachments/59179042/59244624.png" data-height="600" data-width="886" data-unresolved-comment-count="0" data-linked-resource-id="59244624" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-16 at 7.08.41 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59179042" data-linked-resource-container-version="7" data-media-id="0aa56a0b-4d42-494c-9da7-0e53714bfd44" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59179042/58884131.png">Screen Shot 2023-11-16 at 6.19.55 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59179042/59342908.png">Screen Shot 2023-11-16 at 3.11.49 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59179042/59244624.png">Screen Shot 2023-11-16 at 7.08.41 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59179042/59408403.png">Screen Shot 2023-11-16 at 7.10.18 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

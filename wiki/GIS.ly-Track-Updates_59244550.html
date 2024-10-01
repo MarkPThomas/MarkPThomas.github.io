@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS.ly Track Updates</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly-System-Architecture_57606145.html">GIS.ly System Architecture</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS.ly Track Updates
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="GIS.lyTrackUpdates-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725235774679 {padding: 0px;}
+div.rbtoc1725235774679 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725235774679 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725235774679'>
+<ul class='toc-indentation'>
+<li><a href='#GIS.lyTrackUpdates-GeoJSONUpdates'>GeoJSON Updates</a>
+<ul class='toc-indentation'>
+<li><a href='#GIS.lyTrackUpdates-updateFromTrack'>updateFromTrack</a></li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GIS.lyTrackUpdates-GeoJSONUpdates">GeoJSON Updates</h2><p>When a manager performs work on a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a>, even with modifications of the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polyline</a> Track, the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object need not be updated. This can be useful for easier rollback of units of work, as well as saving histories of GeoJSON states, among other things.</p><p>When it is time to actually update the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object that is displayed in the <a class="external-link" href="https://react-leaflet.js.org/" rel="nofollow">React-Leaflet</a> Map component, either for updating the view the user sees, or for <a href="GIS.ly-Output_58851334.html" data-linked-resource-id="58851334" data-linked-resource-version="6" data-linked-resource-type="page">file writes</a>, the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object </a>will synchronize the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object via it’s <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">wrapper</a> to the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polyline</a> state. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59244550/60162264.png?width=760" data-image-src="attachments/59244550/60162264.png" data-height="459" data-width="1261" data-unresolved-comment-count="0" data-linked-resource-id="60162264" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.30.31 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59244550" data-linked-resource-container-version="6" data-media-id="19b0d17a-ba15-4e7c-bba6-900e3a66d221" data-media-type="file"></span><h3 id="GIS.lyTrackUpdates-updateFromTrack">updateFromTrack</h3><p>This method gets the updated <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object from the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a>, as well as some other state properties for convenience, such as view bounds. This data is then set to the appropriate component state hook.</p><p>Note that this method DOES NOT update the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object - just the component state. The <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object should either be updated during changes by a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/60293125/GIS+Track+Manager+Classes" data-linked-resource-id="60293125" data-linked-resource-version="6" data-linked-resource-type="page">Track manager</a>, or <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class#Updating" rel="nofollow">manually</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59244550/60325908.png?width=760" data-image-src="attachments/59244550/60325908.png" data-height="622" data-width="1304" data-unresolved-comment-count="0" data-linked-resource-id="60325908" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-17 at 4.21.42 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59244550" data-linked-resource-container-version="6" data-media-id="15934954-555e-44af-8107-0f36b3b09ccb" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59244550/60325908.png">Screen Shot 2023-11-17 at 4.21.42 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59244550/60162264.png">Screen Shot 2023-11-09 at 12.30.31 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:09</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

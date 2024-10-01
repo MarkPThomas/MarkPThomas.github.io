@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS.ly Track Managers</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly-System-Architecture_57606145.html">GIS.ly System Architecture</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS.ly Track Managers
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p><a href="GIS.ly_19333121.html" data-linked-resource-id="19333121" data-linked-resource-version="26" data-linked-resource-type="page">GIS.ly</a> uses a <a class="external-link" href="https://www.eventhelix.com/design-patterns/manager/" rel="nofollow">Manager Pattern</a> in order to perform <a class="external-link" href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" rel="nofollow">CRUD</a> operations with <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Tracks</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59211781/58982407.png?width=760" data-image-src="attachments/59211781/58982407.png" data-height="379" data-width="1180" data-unresolved-comment-count="0" data-linked-resource-id="58982407" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.20.34 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59211781" data-linked-resource-container-version="6" data-media-id="f4767693-1c0a-413f-b587-bc19707c15f6" data-media-type="file"></span><p>The following illustrates how <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Tracks</a> are edited in the application using a <a href="GIS.ly-Track-Managers_59211781.html">Track Manager</a> with the following steps:</p><ol start="1"><li><p>Get <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track</a> from React state hook.</p></li><li><p>Inject <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track</a> into <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/60293125/GIS+Track+Manager+Classes" data-linked-resource-id="60293125" data-linked-resource-version="6" data-linked-resource-type="page">manager object</a>.</p></li><li><p>Call <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/60293125/GIS+Track+Manager+Classes" data-linked-resource-id="60293125" data-linked-resource-version="6" data-linked-resource-type="page">manager methods</a>, which might alter the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track</a>. Additionally, a fresh copy of the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track</a> is returned as a result. This may update the hooked GeoJSON object. See <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class#updateGeoJsonTrack" rel="nofollow"><strong>ref: updateTrack</strong></a><strong> </strong>for more details on  how.</p></li><li><p>Update relevant React state hooks with modified <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track</a>. See <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59244550/GIS.ly+Track+Updates#updateFromTrack" rel="nofollow"><strong>ref: updateFromTrack</strong> sequence diagram</a> for more detail.</p></li></ol><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59211781/60162054.png?width=760" data-image-src="attachments/59211781/60162054.png" data-height="599" data-width="789" data-unresolved-comment-count="0" data-linked-resource-id="60162054" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-17 at 4.17.03 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59211781" data-linked-resource-container-version="6" data-media-id="8626d1b0-1ffd-4eb3-add8-50dc7d50fe9d" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59211781/58982407.png">Screen Shot 2023-11-09 at 12.20.34 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59211781/60162054.png">Screen Shot 2023-11-17 at 4.17.03 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:09</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

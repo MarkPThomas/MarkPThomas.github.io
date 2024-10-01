@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Polyline Stats</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Geometry-Library_52723714.html">Geometry Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Geometry-System-Architecture_181666127.html">Geometry System Architecture</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="181666137.html">Polyline (Geometry)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Polyline Stats
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Aug 23, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Polylines use the stats that can apply to any numerical trend, such as max/min, avg, sum, mean, etc. This is done through higher-level stats that are comprised of these. For example, a segment always has some concept of a <em>length</em>. This differs if the segment is a straight, curved, or other-shaped path. </p><p><a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/95354882/GIS+Stats+Classes" data-linked-resource-id="95354882" data-linked-resource-version="6" data-linked-resource-type="page">GIS libraries</a> may have concepts of height, speed, etc. that do not apply to cross-sectional geometries. As such, this library goes no further, and allows higher-level libraries to use and inherit from this library in order to properly implement the appropriate stats that have meaning for the precise usage of the polyline.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-20 at 4.22.46 PM.png" width="760" loading="lazy" src="attachments/61341699/176914434.png?width=760" data-image-src="attachments/61341699/176914434.png" data-height="933" data-width="827" data-unresolved-comment-count="0" data-linked-resource-id="176914434" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-20 at 4.22.46 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="61341699" data-linked-resource-container-version="7" data-media-id="f28707ef-f80b-44c7-a55c-6435b9ff1020" data-media-type="file"></span><p>Stats interface properties are just the interface that indicates the entire list of potential stats available in the polyline. Stats criteria allow selective turning on/of of individual stats in case a user does not need them &amp; wants to increase speed. Any deriving library should inherit it’s own PolylineStats class, as well as Stats &amp; StatsCriteria interfaces for these uses.  </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-20 at 4.22.58 PM.png" width="760" loading="lazy" src="attachments/61341699/176553995.png?width=760" data-image-src="attachments/61341699/176553995.png" data-height="838" data-width="1170" data-unresolved-comment-count="0" data-linked-resource-id="176553995" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-20 at 4.22.58 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="61341699" data-linked-resource-container-version="7" data-media-id="eb63057d-4fa8-46e9-b3dc-5b364d0b6fa1" data-media-type="file"></span><p>The PolylineStats class is a manager class that references two main types of objects:</p><ol start="1"><li><p>A collection of stats, such as length</p></li><li><p>An object from which to collect stats, and the start/end location for such stats, as:</p><ol start="1"><li><p>A polyline from which the stats are to be derived from beginning to end </p></li><li><p>A start/end set of vertices (assumed to be in the correct order on a polyline) that indicate along what lengths of a polyline the stats are to be derived.</p></li></ol></li></ol><p>This allows a pattern of accumulating stats classes and injecting the type of polyline from which stats are to be collected. The polyline need not know anything about this, as it allows access to its internals to visitors.</p><h2 id="PolylineStats-StatsSubscribing/Updating">Stats Subscribing/Updating</h2><p>Polylines have a <em>version</em> number that is incremented every time a polyline is modified. This allows objects such as PolylineStats managers to lazily subscribe/update to them. In this way, a user can make many modifications to a polyline with no triggering of re-calculating updates. Instead, updates are cached once calculated. When they are fetched, polyline version numbers are compared in order to decide whether to re-calculate the stats or fetch pre-calculated ones.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-22 at 4.04.54 PM.png" width="364" loading="lazy" src="attachments/61341699/180715526.png?width=364" data-image-src="attachments/61341699/180715526.png" data-height="440" data-width="364" data-unresolved-comment-count="0" data-linked-resource-id="180715526" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-22 at 4.04.54 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="61341699" data-linked-resource-container-version="7" data-media-id="4f5333ef-734e-41e4-8777-2e1ddb78dd2a" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/61341699/176553995.png">Screen Shot 2024-08-20 at 4.22.58 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/61341699/176914434.png">Screen Shot 2024-08-20 at 4.22.46 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/61341699/180715526.png">Screen Shot 2024-08-22 at 4.04.54 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:17</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Stats (Geometry)</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Geometry-Library_52723714.html">Geometry Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Geometry-System-Architecture_181666127.html">Geometry System Architecture</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Stats (Geometry)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Aug 23, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>Sometimes it may be desirable to get stats for a Polyline - either the entire length, or for a custom set of contiguous vertices or segments. Stats may include things such as length, max/min or average values, or even statistics based on properties associated with vertices and segments.</p><p>The polyline data structure allows this to be done with a <a href="Polyline-Stats_61341699.html" data-linked-resource-id="61341699" data-linked-resource-version="7" data-linked-resource-type="page">separate stats object </a>that traverses the polyline &amp;  applies different property class objects to aggregate the data needed for the stats desired. This object can then serialize the results into a JSON object. The way the class objects are set up allows for easy additions &amp; customization of stats collection on extended classes of the base stats object or polyline object.</p><p>The following diagram shows the most fundamental stats that can be collected for a polyline. Other libraries can extend from or aggregate these in order to generate more meaningful stats for a particular use case.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-20 at 4.17.46 PM.png" width="760" loading="lazy" src="attachments/176259077/176259087.png?width=760" data-image-src="attachments/176259077/176259087.png" data-height="943" data-width="925" data-unresolved-comment-count="0" data-linked-resource-id="176259087" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-20 at 4.17.46 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176259077" data-linked-resource-container-version="3" data-media-id="12b66442-14e7-42f2-9ddd-eecc089942e0" data-media-type="file"></span><p><code>Constrained stats</code> is an abstract class that allows a user to turn the stats on/off, which can allow for real-time optimization of gathering desired stats for an object by use of some isConsidered delegate that is passed in.</p><p><code>Basic stats</code> inherit from this and have more complex behaviors, such as optionally adding/removing segments, specifying start/end locations,  updating stats, etc.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-20 at 4.22.20 PM.png" width="702" loading="lazy" src="attachments/176259077/176553989.png?width=702" data-image-src="attachments/176259077/176553989.png" data-height="880" data-width="702" data-unresolved-comment-count="0" data-linked-resource-id="176553989" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-20 at 4.22.20 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="176259077" data-linked-resource-container-version="3" data-media-id="44e47fe0-0bfc-4ff2-bb35-02b0b5d03b4f" data-media-type="file"></span><p>In interfaces, the <code>Node of Interest</code> is used in order to save the node at the max/min/median/etc. location in case other data from this node or neighboring segments is desired. Basic stats, such as <code>MaxMin</code> just return a max or min, and other basic stats. Stats with the naming convention <code>{name}Stats</code> tend to contain references to these but reveals them in a more meaningful way, such as a range for Max/Min.</p><p>The basic pattern for stats is to have an interface to implement that specifies the public properties. The classes themselves then have their own methods for adding/removing/calculating/etc. for the stat, as well as uniformly a <code>serialize</code> method that produces a JSON object of the basic end results of any stats calculations.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176259077/176553989.png">Screen Shot 2024-08-20 at 4.22.20 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/176259077/176259087.png">Screen Shot 2024-08-20 at 4.17.46 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:17</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

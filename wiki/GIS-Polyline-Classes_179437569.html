@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS Polyline Classes</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Library_52756784.html">GIS Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-System-Architecture_59244568.html">GIS System Architecture</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS Polyline Classes
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Aug 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="GISPolylineClasses-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236141213 {padding: 0px;}
+div.rbtoc1725236141213 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236141213 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236141213'>
+<ul class='toc-indentation'>
+<li><a href='#GISPolylineClasses-MainPolylineStructure'>Main Polyline Structure</a>
+<ul class='toc-indentation'>
+<li><a href='#GISPolylineClasses-TrackPolylineOptimization'>Track Polyline Optimization</a></li>
+</ul>
+</li>
+<li><a href='#GISPolylineClasses-ClassInterfaces&amp;CommonInheritance/Implementation'>Class Interfaces &amp; Common Inheritance/Implementation</a></li>
+<li><a href='#GISPolylineClasses-Points'>Points</a>
+<ul class='toc-indentation'>
+<li><a href='#GISPolylineClasses-PointFactoryMethods'>Point Factory Methods</a></li>
+<li><a href='#GISPolylineClasses-PointProperties'>Point Properties</a></li>
+<li><a href='#GISPolylineClasses-Elevationvs.Altitude'>Elevation vs. Altitude</a></li>
+</ul>
+</li>
+<li><a href='#GISPolylineClasses-Segments'>Segments</a>
+<ul class='toc-indentation'>
+<li><a href='#GISPolylineClasses-SegmentFactoryMethods'>Segment Factory Methods</a></li>
+</ul>
+</li>
+<li><a href='#GISPolylineClasses-PathProperties'>Path Properties</a>
+<ul class='toc-indentation'>
+<li><a href='#GISPolylineClasses-PathPropertyCreation&amp;Methods'>Path Property Creation &amp; Methods</a></li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GISPolylineClasses-MainPolylineStructure">Main Polyline Structure</h2><p>Polyline classes are representations of <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Routes</a> and <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Tracks</a> subclassed from the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560016/Polyline" data-linked-resource-id="52560016" data-linked-resource-version="7" data-linked-resource-type="page">polyline class</a> in the Geometry library. Each subclass has additional methods related to additional properties and inputs, such as separate querying of elevations points via an API. Some methods are repeated, either constrained to the corresponding <a href="GIS-Point_52723887.html" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Point</a>/<a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560016/Polyline" data-linked-resource-id="52560016" data-linked-resource-version="7" data-linked-resource-type="page">Segment</a> type, or to other ways of navigating the polyline. </p><p>The general pattern in this library is to have an interface that inherits from the base interface, which the class then implements, on top of also inheriting from the base class in order to preserve prior functionality. This interface also inherits from a Route or Track polyline methods interface, which is strictly the methods related to the class. </p><p>The only changes in the public functionality of the class is the types allowed for coordinates passed to the constructor, as well as a static method to be used to determine if a polyline is a Route or Track. All other changes are performed in the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/edit-v2/179437569#Points" rel="nofollow">Points</a>, <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/edit-v2/179437569#Segments" rel="nofollow">Segments</a>, and <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/edit-v2/179437569#Path-Properties" rel="nofollow">Path Properties</a>, described later.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-26 at 1.33.21 PM.png" width="760" loading="lazy" src="attachments/179437569/182386738.png?width=760" data-image-src="attachments/179437569/182386738.png" data-height="934" data-width="1658" data-unresolved-comment-count="0" data-linked-resource-id="182386738" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-26 at 1.33.21 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="179437569" data-linked-resource-container-version="3" data-media-id="39d39faf-4efc-4768-93f6-6279c34f3af8" data-media-type="file"></span><h3 id="GISPolylineClasses-TrackPolylineOptimization">Track Polyline Optimization</h3><p>Tracks can be optimized in navigation by creating a map of timestamps to nodes, since each timestamp is unique. In that case, if any operation is performed by referencing a timestamp, the O(N) time to find the node is reduced to O(1), just as if we had maintained a node reference. This can be further improved where if a time is selected that does not exist, the closest time can be chosen.</p><h2 id="GISPolylineClasses-ClassInterfaces&amp;CommonInheritance/Implementation">Class Interfaces &amp; Common Inheritance/Implementation</h2><p>IQ/ICl in the UML diagrams on this page indicate the following interfaces:</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-26 at 1.38.43 PM.png" width="480" loading="lazy" src="attachments/179437569/183042055.png?width=480" data-image-src="attachments/179437569/183042055.png" data-height="585" data-width="480" data-unresolved-comment-count="0" data-linked-resource-id="183042055" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-26 at 1.38.43 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="179437569" data-linked-resource-container-version="3" data-media-id="844fa3bd-619c-4bbf-bdab-8da0bd5c0ca8" data-media-type="file"></span><p>These are from a library common to all projects in the Mark.ly &amp; Mark.se namespaces. In this case, these allow easy non-reference equality comparison as well as deep cloning potential.</p><p>The polyline class implements these interfaces, while in most other cases, a final class interface inherits from these. The class interface pulls together these common interfaces alongside other interfaces. In this way, classes can directly use property interfaces that may also be used purely for data (i.e. serialization), but have a final &amp; simple interface that pulls together other interfaces related more to class behavior.</p><h2 id="GISPolylineClasses-Points">Points</h2><p>All points ultimately subclass from the abstract <a href="https://markpthomas.atlassian.net/wiki/spaces/EOSS/pages/154272163/Vertex" data-linked-resource-id="154272163" data-linked-resource-version="1" data-linked-resource-type="page">Vertex</a> class used in <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polylines</a>. Each additional subclass is performed for the different conceptual level where additional properties/methods apply. </p><p>For easily testable, extensible &amp; simple code, each class implements a ‘class interface’ that combines equality &amp; cloning interfaces, and interfaces of the serializable properties, with methods specific to the class when needed. </p><p>The public implementation of the classes is kept simple by merely having additional constructor arguments as needed, as well as static factory methods. The basic Point class has a number of other convenience static methods for calculations involving 2 points, such as calculating linear distance between the 2 latitude/longitude coordinates.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-26 at 1.33.41 PM.png" width="760" loading="lazy" src="attachments/179437569/183140360.png?width=760" data-image-src="attachments/179437569/183140360.png" data-height="816" data-width="1862" data-unresolved-comment-count="0" data-linked-resource-id="183140360" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-26 at 1.33.41 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="179437569" data-linked-resource-container-version="3" data-media-id="f8138e3a-6494-4485-9b6c-4df73335ebbf" data-media-type="file"></span><h3 id="GISPolylineClasses-PointFactoryMethods">Point Factory Methods</h3><p>Each point has a set of 3 factory methods to generate it from the following lower level data types:</p><ol start="1"><li><p><a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/56098850/GeoJSON+Position" data-linked-resource-id="56098850" data-linked-resource-version="9" data-linked-resource-type="page">Position</a> - GeoJSON Position.</p></li><li><p><a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/56557583/GeoJSON+Point" data-linked-resource-id="56557583" data-linked-resource-version="12" data-linked-resource-type="page">Point</a>* - GeoJSON Point, NOT the point defined in the GIS library.</p></li><li><p><a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/edit-v2/179437569#Point-Properties" rel="nofollow">Point Properties</a> - The most fundamental properties needed to define the point, such as latitude &amp; longitude (and optional altitude or elevation) for the GIS Point object.</p></li></ol><h3 id="GISPolylineClasses-PointProperties">Point Properties</h3><p>Point properties are just that - the most basic scalar data needed in order to construct the Point.</p><h3 id="GISPolylineClasses-Elevationvs.Altitude">Elevation vs. Altitude</h3><p>It is important to note here the difference between altitude and elevation (as already discussed for <a href="GIS-Point_52723887.html" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a>). <strong>Altitude</strong> is recorded by GPS devices or other such devices at the time. Inaccuracies are due to inaccuracies in the device recording (e.g. satellite reception, barometer calibrations, etc.)</p><p><strong>Elevation</strong> is determined later by using latitude &amp; longitude to look up a specified elevation on the surface of the Earth at that location determined by DEM data.  Inaccuracies are due to the accuracy of the data chosen, such as a higher resolution DEM, one using LIDAR data vs. older surveying data, etc.</p><h2 id="GISPolylineClasses-Segments">Segments</h2><p>Just as <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">segments</a> join any 2 vertices, it is worth having derived interfaces and classes for segments joining 2 Points for a <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route</a> or <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a>. Similar to <a href="GIS-Point_52723887.html" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a>, these have additional properties that apply to the concept of a Route or Track. </p><p>Since Segments have an interface and non-abstract class in the Geometry library, this library inherits from each of these as a starting point of further defining the class.</p><p>For easily testable, extensible &amp; simple code, each class implements a ‘class interface’ that combines equality &amp; cloning interfaces, and interfaces of the serializable properties, with methods specific to the class when needed. </p><p>The public implementation of the classes is kept simple by merely having additional constructor arguments as needed, as well as static factory methods. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-26 at 1.33.53 PM.png" width="760" loading="lazy" src="attachments/179437569/182583306.png?width=760" data-image-src="attachments/179437569/182583306.png" data-height="886" data-width="1554" data-unresolved-comment-count="0" data-linked-resource-id="182583306" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-26 at 1.33.53 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="179437569" data-linked-resource-container-version="3" data-media-id="2245d7da-f8b1-4585-869f-74f0bf7ae7bf" data-media-type="file"></span><h3 id="GISPolylineClasses-SegmentFactoryMethods">Segment Factory Methods</h3><p>Each segment is generated by providing 2 points of the appropriate class type or further subclass (i.e. you can generate Route Segments from Track Points).</p><h2 id="GISPolylineClasses-PathProperties">Path Properties</h2><p>A concept related to segments in the GIS library are <a href="GIS-Path_52560064.html" data-linked-resource-id="52560064" data-linked-resource-version="7" data-linked-resource-type="page">Paths</a>. These join at least 2 segments, but aren’t necessarily a full Route or Track. These are used to determine 2rd-order properties about a Point, such as speed. The interface inheritance &amp; implementation follow the same pattern as for Points &amp; Segments. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-26 at 1.27.45 PM.png" width="760" loading="lazy" src="attachments/179437569/182616077.png?width=760" data-image-src="attachments/179437569/182616077.png" data-height="940" data-width="1423" data-unresolved-comment-count="0" data-linked-resource-id="182616077" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-26 at 1.27.45 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="179437569" data-linked-resource-container-version="3" data-media-id="99ea9f82-4f70-40f1-a10a-f87462918f6a" data-media-type="file"></span><h3 id="GISPolylineClasses-PathPropertyCreation&amp;Methods">Path Property Creation &amp; Methods</h3><p>Path properties are initialized with optional scalar data of what the properties are to be. However, the properties can also be dynamically generated later by adding the 2 adjacent segments from which the properties are derived.</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/179437569/182616077.png">Screen Shot 2024-08-26 at 1.27.45 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/179437569/182583306.png">Screen Shot 2024-08-26 at 1.33.53 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/179437569/183140360.png">Screen Shot 2024-08-26 at 1.33.41 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/179437569/182386738.png">Screen Shot 2024-08-26 at 1.33.21 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/179437569/183042055.png">Screen Shot 2024-08-26 at 1.38.43 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

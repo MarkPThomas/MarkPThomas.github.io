@@ -16,16 +16,7 @@
                                 <span><a href="index.html">mark-p-thomas</a></span>
                             </li>
                                                     <li>
-                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Apps_819631.html">Apps</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Libraries_52559918.html">Libraries</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                                <span><a href="GeoJSON-Library_52559930.html">GeoJSON Library</a></span>
                             </li>
                                                 </ol>
                     </div>
@@ -45,12 +36,22 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
                     <div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
 <p>These terms adhere to <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc7946" rel="nofollow">RFC 7946 - The GeoJSON Format</a>.</p>
-</div></div><h2 id="GeoJSONGlossary-BasicTerms">Basic Terms</h2><div class="table-wrap"><table data-table-width="960" data-layout="wide" data-local-id="5f0e6e92-eaf5-4d78-96e0-ff783d601486" class="confluenceTable"><colgroup><col style="width: 157.0px;"/><col style="width: 452.0px;"/><col style="width: 351.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Term</strong></p></th><th class="confluenceTh"><p><strong>Definition</strong></p></th><th class="confluenceTh"><p><strong>Example</strong></p></th></tr><tr><td class="confluenceTd"><p><a class="external-link" href="https://docs.mapbox.com/android/java/api/libjava-geojson/5.8.0/com/mapbox/geojson/BoundingBox.html" rel="nofollow">Bounding Box</a> (bbox)</p></td><td class="confluenceTd"><p>Information on the coordinate range for GeoJSON Geometries, Features, or FeatureCollections. At a minimum, a bounding box will have two <code>Point</code>s or four coordinates which define the box. A 3rd dimensional bounding box can be produced if elevation or altitude is defined. The convention for the two Points is [lower-left (southwest) corner, upper-right (northeast) corner].</p><p>Often referred to as <code>bbox</code>.</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><a class="external-link" href="https://docs.mapbox.com/android/java/api/libjava-geojson/5.8.0/com/mapbox/geojson/Feature.html" rel="nofollow">Feature</a></p></td><td class="confluenceTd"><p>This defines a GeoJson Feature object which represents a spatially bound thing. Every Feature object is a GeoJson object no matter where it occurs in a GeoJson text. A Feature object will always have a &quot;type&quot; member with the value &quot;Feature&quot;.</p><p>A Feature object has a member with the name &quot;geometry&quot;. The value of the geometry member SHALL be either a Geometry object or, in the case that the Feature is unlocated, a JSON null value.</p><p>A Feature object has a member with the name &quot;properties&quot;. The value of the properties member is an object (any JSON object or a JSON null value).</p></td><td class="confluenceTd"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+</div></div><h2 id="GeoJSONGlossary-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236037283 {padding: 0px;}
+div.rbtoc1725236037283 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236037283 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236037283'>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONGlossary-BasicTerms'>Basic Terms</a></li>
+<li><a href='#GeoJSONGlossary-GeometryObjects'>Geometry Objects</a></li>
+</ul>
+</div><h2 id="GeoJSONGlossary-BasicTerms">Basic Terms</h2><div class="table-wrap"><table data-table-width="960" data-layout="wide" data-local-id="5f0e6e92-eaf5-4d78-96e0-ff783d601486" class="confluenceTable"><colgroup><col style="width: 157.0px;"/><col style="width: 452.0px;"/><col style="width: 351.0px;"/></colgroup><tbody><tr><th class="confluenceTh"><p><strong>Term</strong></p></th><th class="confluenceTh"><p><strong>Definition</strong></p></th><th class="confluenceTh"><p><strong>Example</strong></p></th></tr><tr><td class="confluenceTd"><p><a class="external-link" href="https://docs.mapbox.com/android/java/api/libjava-geojson/5.8.0/com/mapbox/geojson/BoundingBox.html" rel="nofollow">Bounding Box</a> (bbox)</p></td><td class="confluenceTd"><p>Information on the coordinate range for GeoJSON Geometries, Features, or FeatureCollections. At a minimum, a bounding box will have two <code>Point</code>s or four coordinates which define the box. A 3rd dimensional bounding box can be produced if elevation or altitude is defined. The convention for the two Points is [lower-left (southwest) corner, upper-right (northeast) corner].</p><p>Often referred to as <code>bbox</code>.</p></td><td class="confluenceTd"><p /></td></tr><tr><td class="confluenceTd"><p><a class="external-link" href="https://docs.mapbox.com/android/java/api/libjava-geojson/5.8.0/com/mapbox/geojson/Feature.html" rel="nofollow">Feature</a></p></td><td class="confluenceTd"><p>This defines a GeoJson Feature object which represents a spatially bound thing. Every Feature object is a GeoJson object no matter where it occurs in a GeoJson text. A Feature object will always have a &quot;type&quot; member with the value &quot;Feature&quot;.</p><p>A Feature object has a member with the name &quot;geometry&quot;. The value of the geometry member SHALL be either a Geometry object or, in the case that the Feature is unlocated, a JSON null value.</p><p>A Feature object has a member with the name &quot;properties&quot;. The value of the properties member is an object (any JSON object or a JSON null value).</p></td><td class="confluenceTd"><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
 <pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence"> {
    &quot;type&quot;: &quot;Feature&quot;,
    &quot;geometry&quot;: {
@@ -177,7 +178,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <p>Document generated by Confluence on Sep 01, 2024 18:13</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>

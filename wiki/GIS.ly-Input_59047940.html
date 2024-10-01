@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS.ly Input</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly-System-Architecture_57606145.html">GIS.ly System Architecture</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="59146248.html">GIS.ly Input/Output</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS.ly Input
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="GIS.lyInput-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725235772762 {padding: 0px;}
+div.rbtoc1725235772762 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725235772762 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725235772762'>
+<ul class='toc-indentation'>
+<li><a href='#GIS.lyInput-ReadingtheFile'>Reading the File</a>
+<ul class='toc-indentation'>
+<li><a href='#GIS.lyInput-InitialLoad'>Initial Load</a></li>
+</ul>
+</li>
+<li><a href='#GIS.lyInput-Post-Processing'>Post-Processing</a>
+<ul class='toc-indentation'>
+<li><a href='#GIS.lyInput-Callback'>Callback</a></li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GIS.lyInput-ReadingtheFile">Reading the File</h2><p>When a file is first read, a separate format adaptor service with an interface is called. This allows for maximum flexibility in changing/modifying libraries that read files, data streams, etc. in various formats such as <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45482018/GPX+Glossary" data-linked-resource-id="45482018" data-linked-resource-version="1" data-linked-resource-type="page">GPX</a>, <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45678641/KML+Glossary" data-linked-resource-id="45678641" data-linked-resource-version="1" data-linked-resource-type="page">KML</a>, etc. The core loading function will actually be file agnostic until a user selects a file, after which the appropriate loading library is called. </p><p>Any call to load from this service results in a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object being returned. In the most basic case of how the app runs, this <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object can be loaded directly into the <a class="external-link" href="https://leafletjs.com/" rel="nofollow">Leaflet</a> <a class="external-link" href="https://react-leaflet.js.org/docs/api-components/#geojson" rel="nofollow">Map component layers</a> for display. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="751" loading="lazy" src="attachments/59047940/60489854.png?width=751" data-image-src="attachments/59047940/60489854.png" data-height="614" data-width="751" data-unresolved-comment-count="0" data-linked-resource-id="60489854" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.13.21 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59047940" data-linked-resource-container-version="7" data-media-id="86c950ef-fb0d-4ce1-9bd3-7750065a7138" data-media-type="file"></span><h3 id="GIS.lyInput-InitialLoad">Initial Load</h3><p>The following sequence diagrams illustrate how a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45482018/GPX+Glossary" data-linked-resource-id="45482018" data-linked-resource-version="1" data-linked-resource-type="page">GPX</a> file is read into the application and converted into a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a> object with a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Track Polyline</a> and <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">wrapped GeoJSON</a> object. <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45678641/KML+Glossary" data-linked-resource-id="45678641" data-linked-resource-version="1" data-linked-resource-type="page">KML</a> files &amp; streamed GeoJSON formats are also supported.</p><p>The file is first read &amp; then converted to a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object using the appropriate library for a given file type. If no type is specified, it is assumed to be streamed <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a>. Next, the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object is passed into whatever callbacks were defined elsewhere and passed into the <code>toGeoJSON</code> method call.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59047940/60325960.png?width=760" data-image-src="attachments/59047940/60325960.png" data-height="552" data-width="1059" data-unresolved-comment-count="0" data-linked-resource-id="60325960" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-16 at 7.14.09 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59047940" data-linked-resource-container-version="7" data-media-id="7663ce7c-5f9e-47be-a4fd-3afaf3d64647" data-media-type="file"></span><h2 id="GIS.lyInput-Post-Processing">Post-Processing</h2><p>In the actual case of the app, while the file is read &amp; converted into JSON, the following also happens:</p><ol start="1"><li><p>The GeoJSON object is <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">injected into a wrapper GeoJSON object from a custom library</a>. This allows for easier handling &amp; updating of the object &amp; provides some level of validation.</p></li><li><p>A <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a> object is created that contains this wrapper object. Data from the resulting <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> is used to derive a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polyline Data Structure</a> that is also contained within the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a>.</p></li></ol><p>This is achieved via a callback that is provided to the initial load method.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59047940/60489860.png?width=760" data-image-src="attachments/59047940/60489860.png" data-height="619" data-width="920" data-unresolved-comment-count="0" data-linked-resource-id="60489860" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-09 at 12.18.15 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59047940" data-linked-resource-container-version="7" data-media-id="8b5f79b0-6c5f-4c5b-9ecd-7e4bd78f6c5b" data-media-type="file"></span><h3 id="GIS.lyInput-Callback">Callback</h3><p>For loading a file into the main <code>Map.tsx</code> <a class="external-link" href="https://react-leaflet.js.org/" rel="nofollow">React-Leaflet</a> component, a <strong>callback</strong> is defined there &amp; passed into the <code>toGeoJSON</code> method call. This callback generates a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track object </a>containing a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON wrapper object</a> from the converted <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> object &amp; then sets the state of the React component. Most of this is handled by the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59179042/GIS+GeoJsonManager+Class" data-linked-resource-id="59179042" data-linked-resource-version="7" data-linked-resource-type="page">GeoJsonManager</a>.</p><p>After the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track object</a> is created, React invokes <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52756592/Polyline+Property+Updates" data-linked-resource-id="52756592" data-linked-resource-version="9" data-linked-resource-type="page">property</a> generation (this is not done by object instantiation) &amp; then adds it to state. Some additional data is retrieved from the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52560076/GIS+Track" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track object</a> to add separately to state for convenience, such at <a class="external-link" href="https://leafletjs.com/" rel="nofollow">Leaflet</a> layers &amp; view bounds.</p><p>Note in the diagram below that the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/45580292/GeoJSON+Glossary" data-linked-resource-id="45580292" data-linked-resource-version="9" data-linked-resource-type="page">GeoJSON</a> file exists externally beforehand &amp; after for other uses. It is ‘hooked’ into the  <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559930/GeoJSON+Library" data-linked-resource-id="52559930" data-linked-resource-version="10" data-linked-resource-type="page">GeoJSON wrapper object</a> in order to <a href="GIS.ly-Track-Updates_59244550.html" data-linked-resource-id="59244550" data-linked-resource-version="6" data-linked-resource-type="page">update</a> it later.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/59047940/60325966.png?width=760" data-image-src="attachments/59047940/60325966.png" data-height="620" data-width="926" data-unresolved-comment-count="0" data-linked-resource-id="60325966" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-16 at 7.20.33 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59047940" data-linked-resource-container-version="7" data-media-id="44f0ff6d-1908-4b81-bb95-3cea12c027a9" data-media-type="file"></span><p>To see the process for the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59179042/GIS+GeoJsonManager+Class" data-linked-resource-id="59179042" data-linked-resource-version="7" data-linked-resource-type="page">GeoJsonManager</a> creating a <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59146275/GIS+Track+Class" data-linked-resource-id="59146275" data-linked-resource-version="14" data-linked-resource-type="page">Track object</a>, see the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/59179042/GIS+GeoJsonManager+Class#toTrack" rel="nofollow"><strong>ref: toTrack</strong> sequence diagram</a>.</p><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59047940/60325960.png">Screen Shot 2023-11-16 at 7.14.09 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59047940/60325966.png">Screen Shot 2023-11-16 at 7.20.33 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59047940/60489854.png">Screen Shot 2023-11-09 at 12.13.21 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/59047940/60489860.png">Screen Shot 2023-11-09 at 12.18.15 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:09</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

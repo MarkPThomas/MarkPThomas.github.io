@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : GIS Stats Classes</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-Library_52756784.html">GIS Library</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS-System-Architecture_59244568.html">GIS System Architecture</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : GIS Stats Classes
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Aug 26, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>The <a href="GIS-Route_52658341.html" data-linked-resource-id="52658341" data-linked-resource-version="7" data-linked-resource-type="page">Route</a> &amp; <a href="GIS-Track_52560076.html" data-linked-resource-id="52560076" data-linked-resource-version="12" data-linked-resource-type="page">Track</a> <a href="GIS-Path_52560064.html" data-linked-resource-id="52560064" data-linked-resource-version="7" data-linked-resource-type="page">paths</a> have stats applicable to any length of the <a href="GIS-Path_52560064.html" data-linked-resource-id="52560064" data-linked-resource-version="7" data-linked-resource-type="page">path</a> available via the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/61341699/Polyline+Stats" data-linked-resource-id="61341699" data-linked-resource-version="7" data-linked-resource-type="page">Stats</a> inherent to the contained <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polyline</a> data structures. Additionally, each of these <a href="GIS-Path_52560064.html" data-linked-resource-id="52560064" data-linked-resource-version="7" data-linked-resource-type="page">paths</a> has their own set of additional stats that are calculated. All <a href="Route-Stats_95387650.html" data-linked-resource-id="95387650" data-linked-resource-version="3" data-linked-resource-type="page">Route Stats</a> are also available in the <a href="Track-Stats_95322114.html" data-linked-resource-id="95322114" data-linked-resource-version="3" data-linked-resource-type="page">Track Stats</a>.</p><p>Stats are inherently different from properties, as properties are related to the individual <a href="GIS-Point_52723887.html" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a>, Segments, or adjacent Segments in order to derive further higher-order <a href="GIS-Point_52723887.html" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Point</a> properties. Stats are properties related to any arbitrary length of the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52658252/Polyline+Data+Structure" data-linked-resource-id="52658252" data-linked-resource-version="19" data-linked-resource-type="page">Polyline</a>, up to the full length, and tend to include trends such as max, min, &amp; average values of a property. These are subclassed from the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723714/Geometry+Library" data-linked-resource-id="52723714" data-linked-resource-version="9" data-linked-resource-type="page">geometry library</a>.</p><div class="confluence-information-macro confluence-information-macro-information"><span class="aui-icon aui-icon-small aui-iconfont-info confluence-information-macro-icon"></span><div class="confluence-information-macro-body"><p>For more information, see the following pages in the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723714/Geometry+Library" data-linked-resource-id="52723714" data-linked-resource-version="9" data-linked-resource-type="page">Geometry library</a>:</p><ul><li><p><a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/176259077/Stats+Geometry" data-linked-resource-id="176259077" data-linked-resource-version="3" data-linked-resource-type="page">Stats</a> (for individual stats)</p></li><li><p><a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/61341699/Polyline+Stats" data-linked-resource-id="61341699" data-linked-resource-version="7" data-linked-resource-type="page">Polyline Stats</a> (for how stats are used in polylines)</p></li></ul></div></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-21 at 5.07.20 PM.png" width="760" loading="lazy" src="attachments/95354882/178749450.png?width=760" data-image-src="attachments/95354882/178749450.png" data-height="317" data-width="764" data-unresolved-comment-count="0" data-linked-resource-id="178749450" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-21 at 5.07.20 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="95354882" data-linked-resource-container-version="6" data-media-id="30de51c1-abfd-4634-88ae-47c9d849ea0d" data-media-type="file"></span><p>Note that Routes add height and slope stats to the length stats that already exist, and Tracks add time-dependent stats such as time, speed &amp; height rate. These two polyline types also have their own derived criteria for allowing users to selectively turn off unwanted stats.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Screen Shot 2024-08-21 at 5.07.11 PM.png" width="760" loading="lazy" src="attachments/95354882/179208205.png?width=760" data-image-src="attachments/95354882/179208205.png" data-height="646" data-width="993" data-unresolved-comment-count="0" data-linked-resource-id="179208205" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2024-08-21 at 5.07.11 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="95354882" data-linked-resource-container-version="6" data-media-id="fedc4a5e-3e29-41bd-aa7b-85fed56302f2" data-media-type="file"></span><p>Apart from overriding/updating some types, the subclasses mostly just include factory methods for generating the appropriate stats class.</p><h2 id="GISStatsClasses-ChildPages">Child Pages</h2><ul class='childpages-macro'><li><a href="Route-Stats_95387650.html" data-linked-resource-id="95387650" data-linked-resource-version="3" data-linked-resource-type="page">Route Stats</a></li><li><a href="Track-Stats_95322114.html" data-linked-resource-id="95322114" data-linked-resource-version="3" data-linked-resource-type="page">Track Stats</a></li></ul>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/95354882/178749450.png">Screen Shot 2024-08-21 at 5.07.20 PM.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/95354882/179208205.png">Screen Shot 2024-08-21 at 5.07.11 PM.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:15</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

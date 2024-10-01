@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Recording Has Many Stops/Breaks</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly_19333121.html">GIS.ly</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="GIS.ly-Demos_55279733.html">GIS.ly Demos</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Recording Has Many Stops/Breaks
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Mar 21, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p>We often stop during GPS recordings. This ends up with extra GPS <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a> that increase file size &amp; complexity but adds no meaningful information to the recording. The app can detect these stops and remove the meaningless TrackPoints. </p><p>This can be seen with the <a href="Polyline-Comparison-Stats-Display_103350389.html" data-linked-resource-id="103350389" data-linked-resource-version="4" data-linked-resource-type="page">Comparison Stats display</a> by tracking the number of <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a> from the initial file and the current state after cleaning out such <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StopsBreaks_1_Start.png" width="448" loading="lazy" src="attachments/104693761/125698087.png?width=448" data-image-src="attachments/104693761/125698087.png" data-height="173" data-width="448" data-unresolved-comment-count="0" data-linked-resource-id="125698087" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="StopsBreaks_1_Start.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="104693761" data-linked-resource-container-version="3" data-media-id="68bfafb6-5133-466e-b61a-c8230d9f9683" data-media-type="file"></span><p>For example on this file that includes 2 days of hiking I did in Peru’s Santa Cruz valley,  removing <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52756672/Track+Smoothing" data-linked-resource-id="52756672" data-linked-resource-version="7" data-linked-resource-type="page">stopped points </a>through <code>Clean Operations &gt; Smooth &gt; Stopped</code> removed over 600 <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a>!</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StopsBreaks_2_CleanStopped.png" width="448" loading="lazy" src="attachments/104693761/126353437.png?width=448" data-image-src="attachments/104693761/126353437.png" data-height="172" data-width="448" data-unresolved-comment-count="0" data-linked-resource-id="126353437" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="StopsBreaks_2_CleanStopped.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="104693761" data-linked-resource-container-version="3" data-media-id="979c3ff1-575d-4c5b-9e4c-129a5e2e2518" data-media-type="file"></span><p>An additional case of meaningless <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a> can come from longer breaks in areas with bad satellite reception. In these cases, the GPS recording may indicate movement by recording inaccurate points. I am calling these <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52756684/Track+Noise+Cloud" data-linked-resource-id="52756684" data-linked-resource-version="10" data-linked-resource-type="page">noise clouds</a>. Choosing <code>Clean Operations &gt; Smooth &gt; Noise Clouds</code>, removed more  <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52723887/GIS+Point" data-linked-resource-id="52723887" data-linked-resource-version="3" data-linked-resource-type="page">Points</a>! </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="StopBreaks_3_CleanNoiseClouds.png" width="449" loading="lazy" src="attachments/104693761/126550053.png?width=449" data-image-src="attachments/104693761/126550053.png" data-height="170" data-width="449" data-unresolved-comment-count="0" data-linked-resource-id="126550053" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="StopBreaks_3_CleanNoiseClouds.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="104693761" data-linked-resource-container-version="3" data-media-id="846dff14-8349-431a-b299-9953da65b09b" data-media-type="file"></span><p />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104693761/125698087.png">StopsBreaks_1_Start.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104693761/126058563.png">StopsBreaks_2_CleanStopped.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104693761/125698093.png">StopBreaks_3_CleanNoiseClouds.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104693761/126353437.png">StopsBreaks_2_CleanStopped.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/104693761/126550053.png">StopBreaks_3_CleanNoiseClouds.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 01, 2024 18:07</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

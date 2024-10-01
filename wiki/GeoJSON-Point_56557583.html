@@ -16,16 +16,7 @@
                                 <span><a href="index.html">mark-p-thomas</a></span>
                             </li>
                                                     <li>
-                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Apps_819631.html">Apps</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Libraries_52559918.html">Libraries</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                                <span><a href="GeoJSON-Library_52559930.html">GeoJSON Library</a></span>
                             </li>
                                                     <li>
                                 <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
@@ -51,17 +42,32 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
                     <div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
 <p>These terms adhere to <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.2" rel="nofollow">RFC 7946 - The GeoJSON Format</a>.</p>
-</div></div><p>A <code>Point</code> represents a single geographic <a href="GeoJSON-Position_56098850.html" data-linked-resource-id="56098850" data-linked-resource-version="7" data-linked-resource-type="page">Position</a> in terms of decimal latitude &amp; longitude.</p><p>This is the most basic GeoJSON <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="10" data-linked-resource-type="page">geometry</a> object &amp; is immutable. All other more complex geometries store &amp; access Positions as Points.</p><p>A GeoJSON object of multiple Points is a <a href="GeoJSON-MultiPoint_56459310.html" data-linked-resource-id="56459310" data-linked-resource-version="10" data-linked-resource-type="page">MultiPoint</a> geometry.</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/56557583/56229976.jpg" data-image-src="attachments/56557583/56229976.jpg" data-height="553" data-width="583" data-unresolved-comment-count="0" data-linked-resource-id="56229976" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-1-point.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="56557583" data-linked-resource-container-version="9" data-media-id="50a64759-ee96-4be8-9998-2deb00c0b9a2" data-media-type="file"></span><h2 id="GeoJSONPoint-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONPoint-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+</div></div><h2 id="GeoJSONPoint-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236045908 {padding: 0px;}
+div.rbtoc1725236045908 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236045908 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236045908'>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONPoint-Definition'>Definition</a></li>
+<li><a href='#GeoJSONPoint-JSONExample&amp;ClassDiagram'>JSON Example &amp; Class Diagram</a>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONPoint-RawGeoJSON'>Raw GeoJSON</a></li>
+<li><a href='#GeoJSONPoint-ClassDiagram'>Class Diagram</a></li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GeoJSONPoint-Definition">Definition</h2><p>A <code>Point</code> represents a single geographic <a href="GeoJSON-Position_56098850.html" data-linked-resource-id="56098850" data-linked-resource-version="9" data-linked-resource-type="page">Position</a> in terms of decimal latitude &amp; longitude.</p><p>This is the most basic GeoJSON <a href="GeoJSON-Geometries_56164374.html" data-linked-resource-id="56164374" data-linked-resource-version="12" data-linked-resource-type="page">geometry</a> object &amp; is immutable. All other more complex geometries store &amp; access Positions as Points.</p><p>A GeoJSON object of multiple Points is a <a href="GeoJSON-MultiPoint_56459310.html" data-linked-resource-id="56459310" data-linked-resource-version="11" data-linked-resource-type="page">MultiPoint</a> geometry.</p><span class="confluence-embedded-file-wrapper image-center-wrapper"><img class="confluence-embedded-image image-center" loading="lazy" src="attachments/56557583/56229976.jpg" data-image-src="attachments/56557583/56229976.jpg" data-height="553" data-width="583" data-unresolved-comment-count="0" data-linked-resource-id="56229976" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="gis_ly-gis-1-point.jpg" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="56557583" data-linked-resource-container-version="12" data-media-id="50a64759-ee96-4be8-9998-2deb00c0b9a2" data-media-type="file"></span><h2 id="GeoJSONPoint-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONPoint-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
 <pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
    &quot;type&quot;: &quot;Point&quot;,
    &quot;coordinates&quot;: [100.0, 0.0]
  }</pre>
-</div></div><h3 id="GeoJSONPoint-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="GeoJSON-API_52559949.html" data-linked-resource-id="52559949" data-linked-resource-version="3" data-linked-resource-type="page">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56557583/56983691.png?width=760" data-image-src="attachments/56557583/56983691.png" data-height="346" data-width="907" data-unresolved-comment-count="0" data-linked-resource-id="56983691" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 5.35.53 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56557583" data-linked-resource-container-version="9" data-media-id="7bf00ba2-3027-42b7-a992-53e1da295f7b" data-media-type="file"></span><p />
+</div></div><h3 id="GeoJSONPoint-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="GeoJSON-API_52559949.html" data-linked-resource-id="52559949" data-linked-resource-version="3" data-linked-resource-type="page">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56557583/56983691.png?width=760" data-image-src="attachments/56557583/56983691.png" data-height="346" data-width="907" data-unresolved-comment-count="0" data-linked-resource-id="56983691" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 5.35.53 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56557583" data-linked-resource-container-version="12" data-media-id="7bf00ba2-3027-42b7-a992-53e1da295f7b" data-media-type="file"></span><p />
                     </div>
 
                                         <div class="pageSection group">
@@ -86,7 +92,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <p>Document generated by Confluence on Sep 01, 2024 18:14</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>

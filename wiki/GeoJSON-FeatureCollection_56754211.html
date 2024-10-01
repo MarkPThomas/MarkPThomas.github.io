@@ -16,16 +16,7 @@
                                 <span><a href="index.html">mark-p-thomas</a></span>
                             </li>
                                                     <li>
-                                <span><a href="mark-p-thomas_229583.html">mark-p-thomas</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Apps_819631.html">Apps</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="Libraries_52559918.html">Libraries</a></span>
-                            </li>
-                                                    <li>
-                                <span><a href="GeoJSON_52559930.html">GeoJSON</a></span>
+                                <span><a href="GeoJSON-Library_52559930.html">GeoJSON Library</a></span>
                             </li>
                                                     <li>
                                 <span><a href="GeoJSON-Documentation_52559961.html">GeoJSON Documentation</a></span>
@@ -48,12 +39,27 @@
     
         
         
-            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 08, 2023
+            Created by <span class='author'> Mark Thomas</span>, last modified on Nov 18, 2023
                         </div>
                     <div id="main-content" class="wiki-content group">
                     <div class="panel" style="background-color: #EAE6FF;border-color: #998DD9;border-width: 1px;"><div class="panelContent" style="background-color: #EAE6FF;">
 <p>These terms adhere to <a class="external-link" href="https://datatracker.ietf.org/doc/html/rfc7946#section-3.3" rel="nofollow">RFC 7946 - The GeoJSON Format</a>.</p>
-</div></div><p>This represents a GeoJson Feature <a href="GeoJSON-Collections_56393733.html" data-linked-resource-id="56393733" data-linked-resource-version="5" data-linked-resource-type="page">Collection</a> which holds a list of <a href="GeoJSON-Feature_56229910.html" data-linked-resource-id="56229910" data-linked-resource-version="12" data-linked-resource-type="page">Feature</a> objects (when serialized the feature list becomes a JSON array). This is implemented using a <a class="external-link" href="https://en.wikipedia.org/wiki/Delegation_pattern" rel="nofollow">Delegation Pattern</a>.</p><p>Note that the feature list could potentially be empty. Features within the list must follow the specifications defined inside the <a href="GeoJSON-Feature_56229910.html" data-linked-resource-id="56229910" data-linked-resource-version="12" data-linked-resource-type="page">Feature</a>  class.</p><h2 id="GeoJSONFeatureCollection-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONFeatureCollection-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+</div></div><h2 id="GeoJSONFeatureCollection-Sections">Sections</h2><style type='text/css'>/*<![CDATA[*/
+div.rbtoc1725236041848 {padding: 0px;}
+div.rbtoc1725236041848 ul {list-style: disc;margin-left: 0px;padding-left: ;}
+div.rbtoc1725236041848 li {margin-left: 0px;padding-left: 0px;}
+
+/*]]>*/</style><div class='toc-macro rbtoc1725236041848'>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONFeatureCollection-Definition'>Definition</a></li>
+<li><a href='#GeoJSONFeatureCollection-JSONExample&amp;ClassDiagram'>JSON Example &amp; Class Diagram</a>
+<ul class='toc-indentation'>
+<li><a href='#GeoJSONFeatureCollection-RawGeoJSON'>Raw GeoJSON</a></li>
+<li><a href='#GeoJSONFeatureCollection-ClassDiagram'>Class Diagram</a></li>
+</ul>
+</li>
+</ul>
+</div><h2 id="GeoJSONFeatureCollection-Definition">Definition</h2><p>This represents a GeoJson Feature <a href="GeoJSON-Collections_56393733.html" data-linked-resource-id="56393733" data-linked-resource-version="5" data-linked-resource-type="page">Collection</a> which holds a list of <a href="GeoJSON-Feature_56229910.html" data-linked-resource-id="56229910" data-linked-resource-version="14" data-linked-resource-type="page">Feature</a> objects (when serialized the feature list becomes a JSON array). This is implemented using a <a class="external-link" href="https://en.wikipedia.org/wiki/Delegation_pattern" rel="nofollow">Delegation Pattern</a>.</p><p>Note that the feature list could potentially be empty. Features within the list must follow the specifications defined inside the <a href="GeoJSON-Feature_56229910.html" data-linked-resource-id="56229910" data-linked-resource-version="14" data-linked-resource-type="page">Feature</a>  class.</p><h2 id="GeoJSONFeatureCollection-JSONExample&amp;ClassDiagram">JSON Example &amp; Class Diagram</h2><h3 id="GeoJSONFeatureCollection-RawGeoJSON">Raw GeoJSON</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
 <pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">{
    &quot;type&quot;: &quot;FeatureCollection&quot;,
    &quot;bbox&quot;: [100.0, 0.0, -100.0, 105.0, 1.0, 0.0],
@@ -61,7 +67,7 @@
      //...
    ]
  }</pre>
-</div></div><h3 id="GeoJSONFeatureCollection-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559949" rel="nofollow">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56754211/57212983.png?width=760" data-image-src="attachments/56754211/57212983.png" data-height="550" data-width="891" data-unresolved-comment-count="0" data-linked-resource-id="57212983" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 4.43.37 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56754211" data-linked-resource-container-version="9" data-media-id="bf89188b-13b9-4aad-81a3-35ecf5c15f27" data-media-type="file"></span><p />
+</div></div><h3 id="GeoJSONFeatureCollection-ClassDiagram">Class Diagram</h3><p>For complete &amp; up to date information, see the <a href="https://markpthomas.atlassian.net/wiki/spaces/MARKPTHOMA/pages/52559949" rel="nofollow">API documentation</a>. For a dynamic interactive diagram, see the <a class="external-link" href="https://www.figma.com/file/7NkfV8lY1IBLlSOR6DO1E1/GeoJSON?type=whiteboard&amp;node-id=0%3A1&amp;t=BoEaPRrIGaEYCxGN-1" rel="nofollow">FigJam diagram</a>.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" width="760" loading="lazy" src="attachments/56754211/57212983.png?width=760" data-image-src="attachments/56754211/57212983.png" data-height="550" data-width="891" data-unresolved-comment-count="0" data-linked-resource-id="57212983" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Screen Shot 2023-11-08 at 4.43.37 PM.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="56754211" data-linked-resource-container-version="11" data-media-id="bf89188b-13b9-4aad-81a3-35ecf5c15f27" data-media-type="file"></span><p />
                     </div>
 
                                         <div class="pageSection group">
@@ -83,7 +89,7 @@
                 </div>             </div> 
             <div id="footer" role="contentinfo">
                 <section class="footer-body">
-                    <p>Document generated by Confluence on Nov 09, 2023 00:28</p>
+                    <p>Document generated by Confluence on Sep 01, 2024 18:14</p>
                     <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
                 </section>
             </div>

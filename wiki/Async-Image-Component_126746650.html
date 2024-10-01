@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>mark-p-thomas : Async Image Component</title>
+        <link rel="stylesheet" href="styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="index.html">mark-p-thomas</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="React-Components-Library_126877716.html">React Components Library</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            mark-p-thomas : Async Image Component
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                        
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Mark Thomas</span>, last modified on Apr 22, 2024
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 id="AsyncImageComponent-Problem">Problem</h2><p>In 2021 I was working on a group project with a <a class="external-link" href="https://www.galvanize.com/hack-reactor/intermediate/full-time-bootcamp/" rel="nofollow">Hack Reactor</a> bootcamp cohort where we were making a demo shopping site as a single page <a class="external-link" href="https://react.dev/" rel="nofollow">React</a> app. During this time, I could <em>NOT</em> stand having <a class="external-link" href="https://www.techopedia.com/definition/29607/jank-web-development" rel="nofollow">janking</a> in the loading of our page as images loaded. In order to be responsive to different screen sizes, images were sized proportionately post hoc by CSS. This pushed everything around asynchronously. </p><p>To make matters more interesting, images were fetched via API where image quality &amp; size could be specified in the GET request. The image server had a number of image sizes &amp; qualities pre-formed (or did the work asynchronously there) in order to offload work from the browser and optimize image file size for the resolution and dimensions desired. However, this meant you had to guess imprecise image sizes while sometimes waiting a bit longer for the image to be returned if erring on overly large or high resolution images (such as banner images loading alongside carousel thumbnails).</p><p>Reading websites is often irritating for me with this as you would be partway through a paragraph, thinking deeply about the content you have read, and as the site was still first loading, or a differently-sized advert was loading as you scrolled along, your text would shift around, causing you to lose your train of thought, and search around yet again to get your bearings on what you were reading. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Jank Site Example-1.gif" width="559" loading="lazy" src="attachments/126746650/133595151.gif?width=559" data-image-src="attachments/126746650/133595151.gif" data-height="841" data-width="559" data-unresolved-comment-count="0" data-linked-resource-id="133595151" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="Jank Site Example-1.gif" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/gif" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="c714db7b-da04-4974-8f68-0ce3a93bcdab" data-media-type="file"></span><p>It turns out that the technical term that encompasses this issue is <a class="external-link" href="https://web.dev/articles/cls" rel="nofollow">Cumulative Layout Shift (CFS)</a>. Ironically, the definition site for the word jank suffers from this. <a class="external-link" href="https://www.techopedia.com/definition/29607/jank-web-development" rel="nofollow">Check it out for a real life example</a> ;-P</p><h2 id="AsyncImageComponent-Solutions">Solutions</h2><p>You have 3 choices regarding this behavior:</p><ol start="1"><li><p>Pre-define the size of your image, regardless of the device or screen size that it is viewed on.</p></li><li><p>Make your page fluid &amp; responsive to a particular screen size or device (e.g. using <a class="external-link" href="https://getbootstrap.com/2.0.2/" rel="nofollow">Twitter Bootstrap</a>, etc.). Users can suffer the janking that comes from this.</p><ol start="1"><li><p>If you want to avoid janking, load synchronously and see if users stick around to let your slow-loading web page finish loading.</p></li></ol></li><li><p>Set an image placeholder that sizes appropriately to the screen size ‘immediately’ and then let the image load at the appropriate size &amp; resolution as it comes in from the <code>GET</code> requests that the tag calls to your local cloud service or <a class="external-link" href="https://www.cloudflare.com/learning/cdn/what-is-a-cdn/" rel="nofollow">CDN</a>.</p></li></ol><p>At least this is what I could work out. So, in order to improve the load time of our team’s app AND maintain the smoothness of no janking, I fleshed out my idea of #3 as a custom React component that we used in our project. It avoided readjustment of page layouts <em>WHILE</em> maintaining a lightning fast load time despite many small &amp; large images as all that was first needed was text, HTML &amp; CSS to load.</p><p>Maybe this is a common thing out there that I have yet to learn how to handle (or popular library to use), but so far I haven’t seen it (please tell me if it is!). So I designed and built my own solution to this need.</p><p>Note: I found resources later on that more fully describe these issues and ways to deal with them. My solution falls within the recommendations, but seems to be more advanced in the situation handled. See:</p><ul><li><p><a class="external-link" href="https://blog.hotstar.com/making-payment-journey-performant-and-smooth-9cce20be27ee" rel="nofollow">Removing “jank” for web page performance</a></p></li><li><p><a class="external-link" href="https://web.dev/articles/cls" rel="nofollow">Cumulative Layout Shift (CLS)</a> from <a class="external-link" href="https://web.dev/" rel="nofollow">web.dev</a></p></li></ul><h2 id="AsyncImageComponent-MySolution">My Solution</h2><p>Load the page, but for every image:</p><ol start="1"><li><p>Load a <code>&lt;div&gt;</code> in place of an <code>&lt;img&gt;</code> tag, but maintain any ids &amp; class names to ensure proper page loading &amp; behavior while React builds the DOM tree.</p></li><li><p>Reflect back what the size of the <code>&lt;div&gt;</code> actually turns out to be based upon screen size when loading.</p></li><li><p>Modify the <code>&lt;img&gt;</code> request to use this size (either with attribute specifications, or ideally API requests for a pre-processed size, if available).</p></li><li><p>Swap the <code>&lt;div&gt;</code> with an <code>&lt;img&gt;</code> element in the DOM with the attributes &amp; correct src call (including image width and/or height).</p></li><li><p>The image loads in place of the <code>&lt;div&gt;</code> without affecting the page.</p></li><li><p>Ignore any redundant image source <code>GET</code> requests whenever the React component re-renders. Only update steps 1-5 when the URL changes.</p></li></ol><p>Below is a sequence diagram of the process:</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-General.png" width="760" loading="lazy" src="attachments/126746650/133529601.png?width=760" data-image-src="attachments/126746650/133529601.png" data-height="841" data-width="922" data-unresolved-comment-count="0" data-linked-resource-id="133529601" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-General.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="9c501770-f101-42a1-8815-26b55c88d411" data-media-type="file"></span><h2 id="AsyncImageComponent-ReactComponentLifecycles">React Component Lifecycles</h2><p>Before we jump into the actual React component, first it is important to understand lifecycle methods in React. These handle the initial mounting of the component in the DOM (<a class="external-link" href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Introduction" rel="nofollow">Document Object Model</a>), as well as later updates that change the state of the component.</p><h3 id="AsyncImageComponent-ComponentMounting">Component Mounting</h3><p>When React creates and renders a component, it fires off a variety of methods that can optionally be used in order to affect the state and form of the component:</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Lifecycle-Component.png" width="553" loading="lazy" src="attachments/126746650/133496834.png?width=553" data-image-src="attachments/126746650/133496834.png" data-height="537" data-width="553" data-unresolved-comment-count="0" data-linked-resource-id="133496834" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="Lifecycle-Component.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="18448cc7-7672-44f1-b8b2-75ba8d50f9a1" data-media-type="file"></span><p>In the render stage, some form of an HTML tag to be inserted is generated &amp; passed to the React framework. The framework does the job of inserting the ‘tag’ into the DOM, and updating or changing the DOM in optimized ways to avoid excessive re-renderings in the browser. </p><p>Note that when React is done ‘rendering’, the component is not actually rendered to the user yet. The web browser needs to load the DOM, and then CSS needs to be applied to size and arrange page elements. Because of this, <code>componentDidMount</code> is your first opportunity to reflect on the page state, but even then, it might not be ready yet.</p><p>Unless a component is removed, these methods are all only run once.</p><h3 id="AsyncImageComponent-ComponentUpdating">Component Updating</h3><p>Once a component is ‘mounted’ in the DOM, events within React can prompt a component to re-render itself. There is a set of functions that are invoked just before and after the rendering in order to conditionally stop the process and check states before &amp; after the render.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Lifecycle-Update.png" width="760" loading="lazy" src="attachments/126746650/133267461.png?width=760" data-image-src="attachments/126746650/133267461.png" data-height="651" data-width="815" data-unresolved-comment-count="0" data-linked-resource-id="133267461" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Lifecycle-Update.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="c3a0524e-9c6d-4564-b511-e068fa778d62" data-media-type="file"></span><p>In the case that a React component needs to make decisions about itself based on the browser display, if the page is not loaded in time for the earliest checking during mounting, an update can be triggered where such reflection can be re-done later. This includes top-down specification of a base property (props) changing, such as an image URL.</p><h2 id="AsyncImageComponent-ReactFlowDiagrams">React Flow Diagrams</h2><p>Now it is time to jump into working out the specific behavior of the React component, handling the various cases.</p><h3 id="AsyncImageComponent-InitialRender">Initial Render</h3><p>Below is a flow diagram sowing the process for the initial rendering of the component. </p><p>Note that the earliest behavior is before the constructor, where a static placeholderCount is defined &amp; set. This allows multiple instances of the same component to uniquely identify themselves. This is used during component instantiation, when a placeholderClassName variable is set that should be unique in the page. This serves as a ‘hook’ for finding &amp; manipulating the component output rendered in the browser.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-0-InitialRender.png" width="760" loading="lazy" src="attachments/126746650/133529611.png?width=760" data-image-src="attachments/126746650/133529611.png" data-height="851" data-width="923" data-unresolved-comment-count="0" data-linked-resource-id="133529611" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-0-InitialRender.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="ee737283-7824-4d15-8c1d-201dbe17fe73" data-media-type="file"></span><p>The other things done here are the immutable properties of the image attributes are stored, and 2 state variables are created &amp; set:</p><ol start="1"><li><p><code>isLoaded</code> lets the component know whether the image is loaded/ready to load. This affects component update &amp; rendering behavior.</p></li><li><p><code>url</code> is initially the base image URL, but once dimensions are known, or the correct API call can be formulated, this is updated. Such an update is what triggers the component to re-render and create an <code>&lt;img&gt;</code> tag rather than the initial placeholder <code>&lt;div&gt;</code>.</p></li></ol><p>Next, the component is rendered, which in this case is the <code>&lt;div&gt;</code> tag, maintaining other class names for proper JavaScript &amp; CSS interactions, as well as the unique class name associated with the component.</p><h3 id="AsyncImageComponent-2MainInitialCases:DOMisQueriedAfterorBeforeDOMisFullyLoaded">2 Main Initial Cases: DOM is Queried After or Before DOM is Fully Loaded</h3><p>Once the <code>&lt;div&gt;</code> is rendered, the component next checks to see what the resulting size is in order to re-render an <code>&lt;img&gt;</code> tag in the DOM. However, the first &amp; most ideal time to check is right after rendering, which might be too fast to get an image size. As such, a before completion &amp; after completion state must be handled.</p><h4 id="AsyncImageComponent-DOMFinishesRendering/SizingBeforeQuery">DOM Finishes Rendering/Sizing Before Query</h4><p>The simplest case is that the <code>&lt;div&gt;</code> has been fully rendered in the browser before React is next able to query it. In this case, everything proceeds along the simplest flow.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-1-A-QueryAfterDOMFinish.png" width="760" loading="lazy" src="attachments/126746650/133234693.png?width=760" data-image-src="attachments/126746650/133234693.png" data-height="811" data-width="921" data-unresolved-comment-count="0" data-linked-resource-id="133234693" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-1-A-QueryAfterDOMFinish.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="9239d6a5-a412-402f-9c51-bf6136ca2614" data-media-type="file"></span><p>See later sections for detailed flow diagrams of the <em>updateImageUrl</em> &amp; <em>Update Triggered by SetState</em> flows.</p><h4 id="AsyncImageComponent-DOMFinishesRendering/SizingAfterQuery">DOM Finishes Rendering/Sizing After Query</h4><p>Now, if the page hasn’t fully finished being displayed in the browser, then when the placeholder <code>&lt;div&gt;</code> is queried, <code>undefined</code> will be returned. In this case, we can’t do anything. However, as the page finishes loading, another rendering will likely be triggered. The component can repeat this check again then and re-render if it is different. If you want additional safeguards, you could also add a timer state that checks after a set time if the page has not yet been loaded.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-1-B-QueryBeforeDOMFinish.png" width="760" loading="lazy" src="attachments/126746650/133529617.png?width=760" data-image-src="attachments/126746650/133529617.png" data-height="916" data-width="924" data-unresolved-comment-count="0" data-linked-resource-id="133529617" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-1-B-QueryBeforeDOMFinish.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="502c0439-8b08-4082-863c-24754a9e5c3b" data-media-type="file"></span><p>See later sections for detailed flow diagrams of the <em>Update Triggered by Other Renderings/Components</em> &amp; <em>Update Triggered by SetState</em> flows.</p><h3 id="AsyncImageComponent-UpdatingCase">Updating Case</h3><p>Another simple case is if parent components specify a change in the image properties (such as user interactions changing an image in a carousel display). In this case, the component is re-rendered but not re-mounted. In this case, the best location to query during the <code>shouldComponentUpdate</code> method, as otherwise, the post-rendering update method might not be invoked, if React determines not to re-render the component. </p><p>It is also useful to check here based solely on the image source changing, as the post-rendering method can trigger an infinite loop between these two methods as the component triggers itself to constantly re-update.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-2-UpdateFromNewProps.png" width="760" loading="lazy" src="attachments/126746650/133529623.png?width=760" data-image-src="attachments/126746650/133529623.png" data-height="688" data-width="922" data-unresolved-comment-count="0" data-linked-resource-id="133529623" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-2-UpdateFromNewProps.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="9839a7a8-6f05-4d54-b596-1da48ca010ba" data-media-type="file"></span><p>See later sections for a detailed flow diagram of the <em>updateImageUrl</em> flow.</p><h3 id="AsyncImageComponent-FlowReferenceCases">Flow Reference Cases</h3><p>These sections look more in depth at some of the flow behavior of the component.</p><h4 id="AsyncImageComponent-Case:UpdateImageUrlwithPlaceholderDimensions">Case: UpdateImageUrl with Placeholder Dimensions</h4><p>This diagram shows more in detail what is done when the web page is queried and the component updated. Note that this can be invoked in any of the lifecycle methods.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-Ref-UpdateImageUrl.png" width="760" loading="lazy" src="attachments/126746650/133496858.png?width=760" data-image-src="attachments/126746650/133496858.png" data-height="830" data-width="920" data-unresolved-comment-count="0" data-linked-resource-id="133496858" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-Ref-UpdateImageUrl.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="51d711e8-234c-42ac-8c55-c6365edac643" data-media-type="file"></span><h4 id="AsyncImageComponent-Case:UpdateTriggeredbyOtherRenderingsorComponents">Case: Update Triggered by Other Renderings or Components</h4><p>In the case that the placeholder <code>&lt;div&gt;</code> has not been swapped out with a corresponding <code>&lt;img&gt;</code> tag, the following flow occurs. In this case, the component is not re-rendered since it itself has not changed (unless new props were passed in).</p><p>Note the coordination between the <code>shouldComponentUpdate</code> method &amp; the <code>componentDidUpdate</code> methods that avoids a potential infinite loop of self-triggered updates. </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-Ref-UpdateTriggered-General.png" width="760" loading="lazy" src="attachments/126746650/133234701.png?width=760" data-image-src="attachments/126746650/133234701.png" data-height="871" data-width="925" data-unresolved-comment-count="0" data-linked-resource-id="133234701" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-Ref-UpdateTriggered-General.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="9fef898c-c683-4b68-b527-9be10d73f13d" data-media-type="file"></span><p>See the next section for a detailed flow diagram of the <em>Update Triggered by SetState</em> flow.</p><h4 id="AsyncImageComponent-Case:UpdateTriggeredbySetStateofComponent">Case: Update Triggered by SetState of Component</h4><p>Whenever the state variable of a React component is changed, the component is triggered to re-render. For this component, the <code>isLoaded</code> variable is changed from <code>false</code> to <code>true</code> at the same time that the <code>url</code> variable is updated in one of 3 possible lifecycle methods in the component. In all 3 cases, the flow below is triggered.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Flow-Ref-UpdateTriggered-SetState.png" width="760" loading="lazy" src="attachments/126746650/133496866.png?width=760" data-image-src="attachments/126746650/133496866.png" data-height="617" data-width="923" data-unresolved-comment-count="0" data-linked-resource-id="133496866" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="Flow-Ref-UpdateTriggered-SetState.png" data-base-url="https://markpthomas.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="126746650" data-linked-resource-container-version="21" data-media-id="d62bb28e-70e5-4a42-93c3-20124901951c" data-media-type="file"></span><h2 id="AsyncImageComponent-Conclusions">Conclusions</h2><p>Implementing this React component greatly sped up our page load time as there was very little upfront computation done, nor any blocking procedures such as waiting for a large image (or all images) to load. At the same time, all page layout shifts occurred VERY fast and only on the first page load, creating a smooth user experience. Even if images loaded later or out of order, interactivity and animations on the page were immediate as the images filled in asynchronously in the <code>&lt;div&gt;</code> placeholder elements.</p><p>Although the component is much more complex than just creating an <code>&lt;img&gt;</code> tag within a parent component, it creates a far more optimal user experience.</p><p /><p><a class="external-link" data-card-appearance="inline" href="https://www.figma.com/file/ZiMmItkbV8fnS2zUT3atc3/React---Async-Image-Loader---Diagrams?type=whiteboard&amp;node-id=0-1&amp;t=S9obhpYK0zjdCNUY-0" rel="nofollow">https://www.figma.com/file/ZiMmItkbV8fnS2zUT3atc3/React---Async-Image-Loader---Diagrams?type=whiteboard&amp;node-id=0-1&amp;t=S9obhpYK0zjdCNUY-0</a> </p><h2 id="AsyncImageComponent-Code">Code</h2><p>I wrote this in an older version of React and haven’t updated the code yet, but if you want the code for the component, here it is. It’s not 100% perfect, lacking on proper logging, but enough to get you started. When I need to rewrite it in TypeScript for a more modern version of React, I will add that to this article as well.</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: js; gutter: false; theme: Confluence" data-theme="Confluence">import React from &#39;react&#39;;
+
+class Image extends React.Component {
+  static placeHolderCount = 0;
+
+  static defaultProps = {
+    imageType: &#39;thumbnail&#39;
+  }
+
+  constructor(props) {
+    super(props);
+    // props:
+    // img: { }
+    // src={item.thumbnail}
+    // alt=&quot;style default thumbnail&quot;
+    // id={item.thumbnail}
+    // class=&quot;po-style po-style-selector-image&quot;
+    // data-style-id={item.id}
+    // onClick={handleClick}
+    // key={itemKey++}
+    // imageType
+
+    this.placeholderClassName = &#39;image-placeholder-&#39; + Image.placeHolderCount++;
+    this.prevPlaceholderDimensions = undefined;
+    this.imageTypes = {
+      banner: 80,
+      card: 70,
+      thumbnail: 100
+    };
+
+    this.getAttributes = this.getAttributes.bind(this);
+    this.updateImageUrl = this.updateImageUrl.bind(this);
+
+    this.state = {
+      isLoaded: false,
+      url: props.img.src
+    };
+  }
+
+  componentDidMount() {
+    if (!this.state.isLoaded) {
+      this.updateImageUrl();
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    const prevUrl = this.props.img.src.split(&#39;?&#39;)[0];
+    const nextUrl = nextProps.img.src.split(&#39;?&#39;)[0];
+    if (prevUrl &amp;&amp; nextUrl &amp;&amp; prevUrl !== nextUrl) {
+      this.updateImageUrl(nextProps.img.src);
+    }
+    return true;
+  }
+
+  componentDidUpdate() {
+    if (!this.state.isLoaded) {
+      this.updateImageUrl();
+    }
+  }
+
+  updateImageUrl(nextImgSrc = undefined) {
+    const prepareUrlParams = (url, param) =&gt; {
+      if (url.includes(`&amp;${param}=`)) {
+        url = url.replace(`&amp;${param}=`, &#39;&#39;);
+        url += &#39;&amp;&#39;;
+      } else if (url.includes(`?${param}=`)) {
+        url = url.replace(`?${param}=`, &#39;?&#39;);
+        if (url.includes(&#39;?&amp;&#39;)) {
+          url = url.replace(&#39;?&amp;&#39;, &#39;?&#39;);
+          url += &#39;&amp;&#39;;
+        }
+      }
+      return url;
+    };
+
+    const getInnerHeight = (element) =&gt; {
+      const computed = getComputedStyle(element);
+      const padding = parseInt(computed.paddingTop) + parseInt(computed.paddingBottom);
+
+      return element.clientHeight - padding
+    };
+
+    const getInnerWidth = (element) =&gt; {
+      const computed = getComputedStyle(element);
+      const padding = parseInt(computed.paddingLeft) + parseInt(computed.paddingRight);
+
+      return element.clientWidth - padding
+    };
+
+    const getPlaceholderDimensions = () =&gt; {
+      const placeholder = document.getElementsByClassName(this.placeholderClassName);
+      if (!placeholder || placeholder.length === 0) {
+        console.log(&#39;%cNo placeholder found! Using previous dimensions.&#39;, &#39;color: yellow&#39;);
+        return this.prevPlaceholderDimensions;
+      }
+      if (placeholder.length &gt; 1) {
+        console.log(&#39;%cMultiple placeholders found!&#39;, &#39;color: red&#39;);
+        return;
+      }
+
+      const width = 2 * getInnerWidth(placeholder[0]);
+      const height = 2 * getInnerHeight(placeholder[0]);
+      if (!width &amp;&amp; !height) {
+        !width &amp;&amp; console.log(&#39;%cPlaceholder does not have a width!&#39;, &#39;color: red&#39;);
+        !height &amp;&amp; console.log(&#39;%cPlaceholder does not have a height!&#39;, &#39;color: red&#39;);
+        return;
+      } else {
+        this.prevPlaceholderDimensions = { width, height };
+        return { width, height };
+      }
+    };
+
+    const updateSize = (urlUpdatedSize, placeholderWidth, placeholderHeight) =&gt; {
+      if (placeholderHeight &amp;&amp; placeholderHeight &gt; placeholderWidth) {
+        if (imgUrl.includes(&#39;?h=&#39;) || imgUrl.includes(&#39;&amp;h=&#39;)) {
+          console.log(&#39;Replacing height&#39;);
+          urlUpdatedSize = imgUrl.replace(/(h=).*?(&amp;|$)/, &#39;$1&#39; + placeholderHeight + &#39;$2&#39;);
+        } else {
+          console.log(&#39;Removing width&#39;);
+          urlUpdatedSize = urlUpdatedSize.replace(/(w=).*?(&amp;|$)/, &#39;$1&#39; + &#39;&#39; + &#39;$2&#39;);
+          urlUpdatedSize = prepareUrlParams(urlUpdatedSize, &#39;w&#39;);
+          console.log(`adding Height h=${placeholderHeight}`);
+
+          urlUpdatedSize += `h=${placeholderHeight}`;
+        }
+      } else if (placeholderWidth) {
+        if (imgUrl.includes(&#39;?w=&#39;) || imgUrl.includes(&#39;&amp;w=&#39;)) {
+          console.log(&#39;Replacing width&#39;);
+          urlUpdatedSize = imgUrl.replace(/(w=).*?(&amp;|$)/, &#39;$1&#39; + placeholderWidth + &#39;$2&#39;);
+        } else {
+          console.log(&#39;Removing height&#39;);
+          urlUpdatedSize = urlUpdatedSize.replace(/(h=).*?(&amp;|$)/, &#39;$1&#39; + &#39;&#39; + &#39;$2&#39;);
+          urlUpdatedSize = prepareUrlParams(urlUpdatedSize, &#39;h&#39;);
+          console.log(`adding Width w=${placeholderWidth}`);
+          urlUpdatedSize += `w=${placeholderWidth}`;
+        }
+      }
+      return urlUpdatedSize;
+    };
+
+    const imgUrl = nextImgSrc ? nextImgSrc : this.props.img.src;
+    if (!imgUrl) {
+      this.setState({
+        isLoaded: false
+      });
+      return;
+    }
+    console.log(&#39;%cOld Url&#39;, &#39;color: green&#39;);
+    console.log(imgUrl);
+
+    const placeholderDimensions = getPlaceholderDimensions();
+    if (!placeholderDimensions) {
+      return;
+    }
+
+    let urlUpdatedSize = updateSize(imgUrl, placeholderDimensions.width, placeholderDimensions.height);
+    const quality = this.getQuality(this.props.imageType);
+    const urlUpdatedWidthAndQuality = urlUpdatedSize.replace(/(q=).*?(&amp;|$)/, &#39;$1&#39; + quality + &#39;$2&#39;);
+
+    console.log(&#39;%c🌋New Url&#39;, &#39;color: green&#39;);
+    console.log(urlUpdatedWidthAndQuality);
+    this.setState({
+      isLoaded: true,
+      url: urlUpdatedWidthAndQuality
+    });
+  }
+
+  getQuality(imageType) {
+    let quality = this.imageTypes[imageType];
+    return quality ? quality : 80;
+  }
+
+  getAttributes(isLoaded, attributes, url) {
+    let newAttributes = {};
+    if (isLoaded) {
+      newAttributes = attributes;
+      newAttributes.src = url;
+    } else {
+      newAttributes.className = this.placeholderClassName;
+
+      if (attributes.className) {
+        newAttributes.className += &#39; &#39; + attributes.className;
+      }
+      if (attributes.id) {
+        newAttributes.id = attributes.id;
+      }
+    }
+
+    return newAttributes;
+  }
+
+  render() {
+    console.log(&#39;%cRendering Image!&#39;, &#39;color: green&#39;);
+    const isLoaded = this.state.isLoaded;
+    const url = this.state.url;
+    const attributes = this.props.img;
+
+    return (
+      &lt;React.Fragment&gt;
+        {
+          isLoaded ?
+            (
+              &lt;img {...this.getAttributes(isLoaded, attributes, url)} /&gt;
+            ) : (
+              &lt;div {...this.getAttributes(isLoaded, attributes)}&gt;&lt;/div&gt;
+            )
+        }
+      &lt;/React.Fragment&gt;
+    );
+  }
+}
+
+
+
+export default Image;</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133529601.png">Flow-General.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133496840.png">Lifecycle-Component.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133267461.png">Lifecycle-Update.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133496834.png">Lifecycle-Component.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133529611.png">Flow-0-InitialRender.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133234693.png">Flow-1-A-QueryAfterDOMFinish.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133529617.png">Flow-1-B-QueryBeforeDOMFinish.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133529623.png">Flow-2-UpdateFromNewProps.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133496858.png">Flow-Ref-UpdateImageUrl.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133234701.png">Flow-Ref-UpdateTriggered-General.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133234707.png">Flow-Ref-UpdateTriggered-SetState.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133496866.png">Flow-Ref-UpdateTriggered-SetState.png</a> (image/png)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133693441.jpg">Jank Site Example-3.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133693444.jpg">Jank Site Example-4.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133693443.jpg">Jank Site Example-1.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133693442.jpg">Jank Site Example-2.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133627908.gif">Jank Site Example-1.gif</a> (image/gif)
+                                <br/>
+                                                            <img src="images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="attachments/126746650/133595151.gif">Jank Site Example-1.gif</a> (image/gif)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on Sep 27, 2024 08:24</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
